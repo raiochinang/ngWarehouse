@@ -4,3 +4,10 @@
     padding-top: 50px;
   }
 }
+
+.menu {
+}
+
+  .menu:hover {
+    cursor: pointer;
+  }

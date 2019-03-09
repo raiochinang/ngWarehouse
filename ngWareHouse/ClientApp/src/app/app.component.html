@@ -1,8 +1,27 @@
-<body>
-  <app-nav-menu *ngIf="show"></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-</body>
-
+<mat-drawer-container class="example-container" [hasBackdrop]="true">
+  <mat-drawer #drawer [mode]="side">
+    <mat-list>
+      <mat-list-item>
+      </mat-list-item>
+      <mat-list-item> Ryan Ochinang </mat-list-item>
+      <mat-list-item>  Administrator</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a class="nav-link text-dark" [routerLink]='["/purchase-receive"]'>Purchase Receive</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="router-outlet">
+      <mat-toolbar *ngIf="show">
+        <mat-icon class="menu" matSuffix (click)="drawer.toggle()">menu</mat-icon>
+        HEADER
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
 

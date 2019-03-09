@@ -1,0 +1,22 @@
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="PO Number">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Branch">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Supplier"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Status">
+      <mat-option *ngFor="let item of status" [value]="item.value">
+        {{item.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+

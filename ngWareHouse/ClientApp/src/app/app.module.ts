@@ -20,7 +20,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { LogInComponent } from './log-in/log-in.component';
+import { PurchaseRecieveComponent } from './purchase-recieve/purchase-recieve.component';
+import { PurchaseRecieveEntryComponent } from './purchase-recieve-entry/purchase-recieve-entry.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,9 @@ import { LogInComponent } from './log-in/log-in.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    LogInComponent
+    LogInComponent,
+    PurchaseRecieveComponent,
+    PurchaseRecieveEntryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,12 +56,19 @@ import { LogInComponent } from './log-in/log-in.component';
     ReactiveFormsModule,
     MatIconModule,
     MatCardModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatListModule,
+    MatTableModule,
+    MatGridListModule,
     RouterModule.forRoot([
       { path: '', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'log-in', component: LogInComponent },
       { path: 'home', component: HomeComponent },
+      { path: 'purchase-receive', component: PurchaseRecieveComponent },
+      { path: 'purchase-receive-entry/:id', component: PurchaseRecieveEntryComponent },
     ])
   ],
   providers: [],
