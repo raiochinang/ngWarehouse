@@ -31,6 +31,7 @@ export class LogInComponent implements OnInit {
   username = new FormControl('');
   password = new FormControl('');
   showWarning: boolean = false;
+  hide = true;
 
   ngOnInit() {
     this.showWarning = false;

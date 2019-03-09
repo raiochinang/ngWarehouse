@@ -18,6 +18,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 import { LogInComponent } from './log-in/log-in.component';
 
 @NgModule({
@@ -43,6 +45,8 @@ import { LogInComponent } from './log-in/log-in.component';
     MatMenuModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    MatIconModule,
+    MatCardModule,
     RouterModule.forRoot([
       { path: '', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
