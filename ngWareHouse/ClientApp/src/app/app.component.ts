@@ -9,12 +9,12 @@ import { User } from './interfaces/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    
+
   constructor(private logService: LogService, private router: Router) {
     logService.getlogin.subscribe(result => {
       if (result) {
         this.show = true;
-        this.user = result;        
+        this.user = result;
       }
       else {
         this.show = false;
@@ -24,6 +24,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.navigateByUrl('');
+    this.user = {
+      full_name_fld: '',
+      role_name: ''
+
+    } as User;
+
   }
 
   //
@@ -33,5 +39,5 @@ export class AppComponent implements OnInit {
   show: boolean = false;
   showFiller = false;
   user: User;
-  
+
 }
