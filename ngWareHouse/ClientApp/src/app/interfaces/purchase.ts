@@ -3,5 +3,5 @@ export interface Purchase {
   poNumber: string;
   locationId: number;
   supplier: string;
-  isFinal: boolean
+  isFinal: boolean;
 }

@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatRippleModule } from '@angular/material/core';
+import { MatRippleModule, MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -25,9 +25,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { LogInComponent } from './log-in/log-in.component';
 import { PurchaseRecieveComponent } from './purchase-recieve/purchase-recieve.component';
 import { PurchaseRecieveEntryComponent } from './purchase-recieve-entry/purchase-recieve-entry.component';
+import { Globals } from './interfaces/globals';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { PurchaseRecieveEntryComponent } from './purchase-recieve-entry/purchase
     MatListModule,
     MatTableModule,
     MatGridListModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule ,
     RouterModule.forRoot([
       { path: '', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -71,7 +77,7 @@ import { PurchaseRecieveEntryComponent } from './purchase-recieve-entry/purchase
       { path: 'purchase-receive-entry/:id', component: PurchaseRecieveEntryComponent },
     ])
   ],
-  providers: [],
+  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
