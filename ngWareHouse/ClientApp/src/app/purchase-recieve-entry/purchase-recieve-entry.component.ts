@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Status } from '../interfaces/status';
 import { FormControl } from '@angular/forms';
@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { log } from 'util';
 import { Globals } from '../interfaces/globals';
 import { map, startWith } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../interfaces/product';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
@@ -18,7 +19,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 })
 export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
 
-  constructor(private route: ActivatedRoute, private globals: Globals) {
+  constructor(private route: ActivatedRoute, private globals: Globals, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
   }
 
   //
@@ -37,13 +38,7 @@ export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
   poNumber = new FormControl('');
   branch = new FormControl('');
   product = new FormControl();
-  options: Product[] = [
-    { id: 1, item_name_fld: 'apple' }, { id: 2, item_name_fld: 'banana' }, { id: 3, item_name_fld: 'bananapple' },
-    { id: 4, item_name_fld: 'avocado' }, { id: 5, item_name_fld: 'melon' }, { id: 6, item_name_fld: 'watermelon' },
-    { id: 7, item_name_fld: 'mango' }, { id: 8, item_name_fld: 'star apple' }, { id: 9, item_name_fld: 'pineapple' },
-    { id: 10, item_name_fld: 'chico' }, { id: 11, item_name_fld: 'grapes' }, { id: 12, item_name_fld: 'oranges' },
-    { id: 13, item_name_fld: 'strawberries' }, { id: 14, item_name_fld: 'peaches' }, { id: 15, item_name_fld: 'apricots' },
-  ];
+  options: Product[] = [];
   filteredOptions: Observable<Product[]>;
 
   ngOnInit() {
@@ -51,6 +46,11 @@ export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
       this.id = +params['id'];
       var poNum = this.padLeft(this.id.toString(), '0', 8);
       this.poNumber.setValue('PO-' + poNum);
+    });
+
+    var url = this.baseUrl + 'api/Product/GetProducts';
+    this.http.get<Product[]>(url).subscribe(res => {
+      this.options = res;
     });
 
     this.poNumber.disable();
@@ -77,21 +77,21 @@ export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
     if (!id) return '';
 
     let index = this.options.findIndex(item => item.id === id);
-    return this.options[index].item_name_fld;
+    return this.options[index].item;
   }
 
   padLeft(text: string, padChar: string, size: number): string {
     return (String(padChar).repeat(size) + text).substr((size * -1), size);
   }
 
-  private _filter(value: string): Product[] {    
+  private _filter(value: string): Product[] {
     if (Number(value)) {
       var filterValue = Number(value);
       return this.options.filter(option => option.id === filterValue);
     }
     else {
       const filterValue = value.toLowerCase();
-      return this.options.filter(option => option.item_name_fld.toLowerCase().includes(filterValue));
+      return this.options.filter(option => option.item.toLowerCase().includes(filterValue));
     }
-  }  
+  }
 }

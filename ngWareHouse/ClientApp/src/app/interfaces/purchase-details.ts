@@ -1,8 +1,8 @@
 export interface PurchaseDetails {
   id: number;
-  poNumber: string;
+  po_number: string;
   productId: number;
   lotNumber: string;
   quantity: number;
-  expireDate: Date;
+  expireDate: string;
 }

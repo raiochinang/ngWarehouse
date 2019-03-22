@@ -34,7 +34,7 @@
       <input type="text" placeholder="Product" aria-label="Number" matInput [formControl]="product" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="onDisplayWith.bind(this)">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
-          {{option.item_name_fld}}
+          {{option.item}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
@@ -51,7 +51,7 @@
   </mat-grid-tile>
   <mat-grid-tile [colspan]="1" [rowspan]="1">
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <input matInput [matDatepicker]="picker" placeholder="Expiration">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

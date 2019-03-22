@@ -1,0 +1,9 @@
+tables
+ngpurchase
+ngpurchasedetails
+
+views
+1. products
+
+
+cd 'C:\Users\rai\Desktop\Side Lines\ngWareHouse\ngWareHouse\ClientApp\src\app\interfaces'
