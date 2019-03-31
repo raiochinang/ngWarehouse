@@ -11,6 +11,7 @@ import { map, startWith } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../interfaces/product';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { PurchaseDetail } from '../interfaces/purchase-details';
 
 @Component({
   selector: 'app-purchase-recieve-entry',
@@ -32,8 +33,9 @@ export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
     { value: 'final', viewValue: 'Final' }
   ];
   user: User;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = [];
+  displayedColumns: string[] = ['id', 'po_number', 'productId', 'lotNumber', 'quantity', 'expireDate'];
+  //dataSource:PurchaseDetail[];
+  purchaseDetails: PurchaseDetail[] = [];
 
   poNumber = new FormControl('');
   branch = new FormControl('');
@@ -51,6 +53,7 @@ export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
     var url = this.baseUrl + 'api/Product/GetProducts';
     this.http.get<Product[]>(url).subscribe(res => {
       this.options = res;
+      this.okay();
     });
 
     this.poNumber.disable();
@@ -93,5 +96,20 @@ export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
       const filterValue = value.toLowerCase();
       return this.options.filter(option => option.item.toLowerCase().includes(filterValue));
     }
+  }
+
+  okay() {
+    let detail = {
+      productId: 1,//this.product.value,
+      po_number: 'dsdsd',//this.poNumber.value,
+      id: 0,
+      expireDate: '',
+      lotNumber: 'lotnum11',
+      quantity: 212
+
+    } as PurchaseDetail
+
+    this.purchaseDetails.push(detail);
+    debugger;
   }
 }
