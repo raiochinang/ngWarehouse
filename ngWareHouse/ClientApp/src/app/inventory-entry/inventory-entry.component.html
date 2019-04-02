@@ -1,0 +1,54 @@
+<mat-grid-list cols="3" rowHeight="100%">
+  <mat-grid-tile [colspan]="1">
+    <form class="form" [formGroup]="entryForm">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Barcode" formControlName="barcode" required>
+      </mat-form-field>
+      <div class="full-width">
+        <div>ITEM</div>
+      </div>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Quantity" type="number" formControlName="quantity" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Expiry Date" formControlName="expiryDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Leave a comment" formControlName="comment"></textarea>
+      </mat-form-field>
+      <div class="button-row">
+        <button mat-raised-button color="primary" class="full-width" (click)="onConfirm()" [disabled]="!entryForm.valid">Confirm</button>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="warn" class="full-width" (click)="onCancel()">Cancel</button>
+      </div>
+
+    </form>
+  </mat-grid-tile>
+
+  <!--tables-->
+  <mat-grid-tile [colspan]="2">
+    <table class='table table-striped' *ngIf="items">
+      <thead>
+        <tr>
+          <th>Barcode</th>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Expiry Date</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{ item.barcode }}</td>
+          <td>{{ item.item }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.expiryDate }}</td>
+          <td>{{ item.comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-grid-tile>
+</mat-grid-list>

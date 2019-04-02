@@ -1,0 +1,14 @@
+/*.form {
+  min-width: 50px;
+  max-width: 200px;
+  width: 100%;
+}*/
+
+.full-width {
+  width: 100%;
+}
+
+
+.button-row button {
+  margin-top: 8px;
+}

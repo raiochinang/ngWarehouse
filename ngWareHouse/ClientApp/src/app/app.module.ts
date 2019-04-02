@@ -31,6 +31,7 @@ import { PurchaseRecieveComponent } from './purchase-recieve/purchase-recieve.co
 import { PurchaseRecieveEntryComponent } from './purchase-recieve-entry/purchase-recieve-entry.component';
 import { Globals } from './interfaces/globals';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { InventoryEntryComponent } from './inventory-entry/inventory-entry.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     FetchDataComponent,
     LogInComponent,
     PurchaseRecieveComponent,
-    PurchaseRecieveEntryComponent
+    PurchaseRecieveEntryComponent,
+    InventoryEntryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -68,13 +70,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatDatepickerModule,
     MatNativeDateModule ,
     RouterModule.forRoot([
-      { path: '', component: LogInComponent, pathMatch: 'full' },
+      //{ path: '', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'log-in', component: LogInComponent },
       { path: 'home', component: HomeComponent },
       { path: 'purchase-receive', component: PurchaseRecieveComponent },
       { path: 'purchase-receive-entry/:id', component: PurchaseRecieveEntryComponent },
+      { path: '', component: InventoryEntryComponent, pathMatch: 'full' },
     ])
   ],
   providers: [Globals],
