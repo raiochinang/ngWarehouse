@@ -2,10 +2,10 @@
   <mat-grid-tile [colspan]="1">
     <form class="form" [formGroup]="entryForm">
       <mat-form-field class="full-width">
-        <input matInput placeholder="Barcode" formControlName="barcode" required>
+        <input matInput placeholder="Barcode" formControlName="barcode" (change)="scan()" required>
       </mat-form-field>
       <div class="full-width">
-        <div>ITEM</div>
+        <div>{{itemLabel}}</div>
       </div>
       <mat-form-field class="full-width">
         <input matInput placeholder="Quantity" type="number" formControlName="quantity" required>
@@ -33,19 +33,27 @@
     <table class='table table-striped' *ngIf="items">
       <thead>
         <tr>
-          <th>Barcode</th>
+          <th>Product Id</th>
           <th>Item</th>
+          <th>Barcode</th>
+          <th>Lot Number</th>
           <th>Quantity</th>
           <th>Expiry Date</th>
+          <th>Location Id</th>
+          <th>Location</th>
           <th>Comment</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of items">
-          <td>{{ item.barcode }}</td>
+          <td>{{ item.productId }}</td>
           <td>{{ item.item }}</td>
+          <td>{{ item.barcode }}</td>
+          <td>{{ item.lotNumber }}</td>
           <td>{{ item.quantity }}</td>
           <td>{{ item.expiryDate }}</td>
+          <td>{{ item.locationId }}</td>
+          <td>{{ item.branch }}</td>
           <td>{{ item.comment }}</td>
         </tr>
       </tbody>

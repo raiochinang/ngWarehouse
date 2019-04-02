@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Product } from '../interfaces/product';
+import { Globals } from '../interfaces/globals';
+import { global } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-inventory-entry',
@@ -9,10 +12,21 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class InventoryEntryComponent implements OnInit {
   items: Data[];
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    //http.get<WeatherForecast[]>(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
-    //  this.forecasts = result;
-    //}, error => console.error(error));
+  products: Product[];
+  barcode: string = '';
+  lotnumber: string = '';
+  itemLabel: string = '';
+  itemId: number = 0;
+  branch: string = '';
+  baseURL: string = "";
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private globals: Globals) {
+    var url = baseUrl + 'api/Product/GetProducts';
+    this.baseURL = baseUrl;
+    http.get<Product[]>(url).subscribe(result => {
+      this.products = result;
+    }, error => console.error(error));
+
+    this.branch = globals.user.branch;
   }
 
   entryForm = new FormGroup({
@@ -24,20 +38,54 @@ export class InventoryEntryComponent implements OnInit {
 
   ngOnInit() {
     this.items = [];
+    
+  }
+
+  scan() {
+    var x = this.entryForm.value;
+    if (x.barcode.length > 11) {
+      this.barcode = x.barcode.substring(0, 5);
+      this.lotnumber = x.barcode.substring(5, 12);
+      var productList = this.products.filter(product => product.barcode === this.barcode);
+      if (productList.length > 0) {
+        this.itemLabel = productList[0].item;
+        this.itemId = productList[0].id;
+      }
+      else {
+        this.itemLabel = "ITEM NOT FOUND!"
+        this.barcode = "";
+        this.lotnumber = "";
+        this.entryForm.reset();
+      }
+    }
   }
 
   onConfirm() {
     var x = this.entryForm.value;
     var item = {
-      barcode: x.barcode,
-      item: x.barcode,
+      branch: this.branch,
+      barcode: this.barcode,
+      lotNumber: this.lotnumber,
+      item: this.itemLabel,
+      productId: this.itemId,
       quantity: x.quantity,
       expiryDate: x.expiryDate.toDateString(),
-      comment: x.comment
+      comment: x.comment,
+      locationId: this.globals.user.branch_id,
+      userId: this.globals.user.id
     } as Data;
+
+    var url = this.baseURL + 'api/Product/ProductEntry';
+    this.http.post<boolean>(url, item).subscribe(res => {
+      debugger;
+    });
+
 
     this.items.push(item);
     this.entryForm.reset();
+    this.itemLabel = "";
+
+
   }
 
   onCancel() {
@@ -46,9 +94,14 @@ export class InventoryEntryComponent implements OnInit {
 }
 
 interface Data {
+  branch: string;
   barcode: string;
+  lotNumber: string;
   item: string;
   quantity: number;
   expiryDate: string;
   comment: string;
+  productId: number;
+  locationId: number;
+  userId: number;
 }

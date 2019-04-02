@@ -70,14 +70,14 @@ import { InventoryEntryComponent } from './inventory-entry/inventory-entry.compo
     MatDatepickerModule,
     MatNativeDateModule ,
     RouterModule.forRoot([
-      //{ path: '', component: LogInComponent, pathMatch: 'full' },
+      { path: '', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'log-in', component: LogInComponent },
       { path: 'home', component: HomeComponent },
       { path: 'purchase-receive', component: PurchaseRecieveComponent },
       { path: 'purchase-receive-entry/:id', component: PurchaseRecieveEntryComponent },
-      { path: '', component: InventoryEntryComponent, pathMatch: 'full' },
+      { path: 'inventory-entry', component: InventoryEntryComponent, pathMatch: 'full' },
     ])
   ],
   providers: [Globals],
