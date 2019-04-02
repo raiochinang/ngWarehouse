@@ -12,5 +12,8 @@ namespace ngWareHouse
         public hooDbContext(DbContextOptions<hooDbContext> options) : base(options) { }
 
         public DbSet<dscr_user_roles> dscr_user_roles { get; set; }
+        public DbSet<product> products { get; set; }
+        public DbSet<ngpurchase> purchases { get; set; }
+        public DbSet<ngpurchasedetails> purchaseDetails { get; set; }
     }
 }

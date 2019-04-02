@@ -1,7 +1,7 @@
 export interface Purchase {
   id: number;
-  poNumber: string;
-  locationId: number;
+  po_number: string;
+  branch: string;
   supplier: string;
-  isFinal: boolean;
+  status: string;
 }
