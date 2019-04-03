@@ -32,6 +32,8 @@ import { PurchaseRecieveEntryComponent } from './purchase-recieve-entry/purchase
 import { Globals } from './interfaces/globals';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { InventoryEntryComponent } from './inventory-entry/inventory-entry.component';
+import { InventoryOutGoingComponent } from './inventory-out-going/inventory-out-going.component';
+import { BarecodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { InventoryEntryComponent } from './inventory-entry/inventory-entry.compo
     LogInComponent,
     PurchaseRecieveComponent,
     PurchaseRecieveEntryComponent,
-    InventoryEntryComponent
+    InventoryEntryComponent,
+    InventoryOutGoingComponent,
+    BarecodeScannerLivestreamComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -70,7 +74,7 @@ import { InventoryEntryComponent } from './inventory-entry/inventory-entry.compo
     MatDatepickerModule,
     MatNativeDateModule ,
     RouterModule.forRoot([
-      { path: '', component: LogInComponent, pathMatch: 'full' },
+      { path: 'login', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'log-in', component: LogInComponent },
@@ -78,6 +82,8 @@ import { InventoryEntryComponent } from './inventory-entry/inventory-entry.compo
       { path: 'purchase-receive', component: PurchaseRecieveComponent },
       { path: 'purchase-receive-entry/:id', component: PurchaseRecieveEntryComponent },
       { path: 'inventory-entry', component: InventoryEntryComponent, pathMatch: 'full' },
+      { path: 'inventory-out-going', component: InventoryOutGoingComponent, pathMatch: 'full' },
+      { path: '', component: InventoryOutGoingComponent, pathMatch: 'full' },
     ])
   ],
   providers: [Globals],
