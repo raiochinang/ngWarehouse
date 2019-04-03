@@ -9,4 +9,5 @@ export interface Data {
   productId: number;
   locationId: number;
   userId: number;
+  locationIdFrom: number;
 }

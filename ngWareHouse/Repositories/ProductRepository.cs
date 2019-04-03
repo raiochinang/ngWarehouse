@@ -70,5 +70,35 @@ namespace ngWareHouse.Repositories
             }
            
         }
+
+        public bool InventoryOutGoing(productEntry entry, hooDbContext db)
+        {
+            var e = new ngInventoryTrxOutGoing
+            {
+                branch = entry.branch,
+                barcode = entry.barcode,
+                lotNumber = entry.lotNumber,
+                item = entry.item,
+                quantity = entry.quantity,
+                productId = entry.productId,
+                locationId = entry.locationId,
+                userId = entry.userId,
+                locationIdFrom = entry.locationIdFrom
+            };
+            db.inventorytrxoutgoing.Add(e);
+
+            return true;
+        }
+
+        public void UpdateInventoryOutGoing(productEntry entry, hooDbContext db)
+        {
+            var record = db.inventory.Where(r => r.LocationId == entry.locationIdFrom && r.ProductId == entry.productId && r.LotNumber == entry.lotNumber).SingleOrDefault();
+            if (record != null)
+            {
+                //update
+                record.Quantity -= entry.quantity;
+            }
+
+        }
     }
 }

@@ -73,7 +73,8 @@ export class InventoryEntryComponent implements OnInit {
       expiryDate: x.expiryDate.toDateString(),
       comment: x.comment,
       locationId: this.globals.user.branch_id,
-      userId: this.globals.user.id
+      userId: this.globals.user.id,
+      locationIdFrom: this.globals.user.branch_id
     } as Data;
 
     var url = this.baseURL + 'api/Product/ProductEntry';

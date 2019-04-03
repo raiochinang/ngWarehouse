@@ -45,12 +45,11 @@ namespace ngWareHouse.Controllers
         [HttpPost("[action]")]
         public bool ProductOutGoing([FromBody] productEntry entry)
         {
-            return true;
-            //ProductRepository repo = new ProductRepository();
-            //var result = repo.ProductEntry(entry, _context);
-            //repo.UpdateInventory(entry, _context);
-            //_context.SaveChanges();
-            //return result;
+            ProductRepository repo = new ProductRepository();
+            var result = repo.InventoryOutGoing(entry, _context);
+            repo.UpdateInventoryOutGoing(entry, _context);
+            _context.SaveChanges();
+            return result;
         }
         
     }
@@ -68,5 +67,6 @@ namespace ngWareHouse.Controllers
         public int productId { get; set; }
         public int locationId { get; set; }
         public int userId { get; set; }
+        public int locationIdFrom { get; set; }
     }
 }

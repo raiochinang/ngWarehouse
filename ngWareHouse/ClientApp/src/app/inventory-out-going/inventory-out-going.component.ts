@@ -47,8 +47,10 @@ export class InventoryOutGoingComponent implements OnInit {
     var value = x.barcode.split('*');
     var branchList = this.locations.filter(b => b.id === x.location);
     var branchName = "";
+    var branchId = 0;
     if (branchList.length > 0) {
       branchName = branchList[0].name;
+      branchId = branchList[0].id;
     }
     var quantity = 1;
     if (value.length > 1) {
@@ -78,17 +80,20 @@ export class InventoryOutGoingComponent implements OnInit {
         item: productList[0].item,
         productId: productList[0].id,
         quantity: quantity,
-        locationId: parseInt(this.branch),
-        userId: this.globals.user.id
+        locationId: branchId,
+        userId: this.globals.user.id,
+        expiryDate: '',
+        comment: '',
+        locationIdFrom: this.globals.user.branch_id
       } as Data;
       this.items.push(item);
       this.saveToDataBase(item);
-
     }
   }
 
   saveToDataBase(item: Data) {
     var url = this.baseURL + 'api/Product/ProductOutGoing';
+    debugger;
     this.http.post<boolean>(url, item).subscribe();
   }
 
