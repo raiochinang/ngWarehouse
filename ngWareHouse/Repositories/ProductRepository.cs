@@ -14,6 +14,11 @@ namespace ngWareHouse.Repositories
             return db.products.ToList();
         }
 
+        public List<branch> branches(hooDbContext db)
+        {
+            return db.branches.ToList();
+        }
+
         public bool ProductEntry(productEntry entry, hooDbContext db)
         {
             var e = new ngInventoryTrx

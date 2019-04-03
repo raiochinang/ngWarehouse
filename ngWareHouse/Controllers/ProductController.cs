@@ -34,6 +34,25 @@ namespace ngWareHouse.Controllers
             _context.SaveChanges();
             return result;
         }
+
+        [HttpGet("[action]")]
+        public IEnumerable<branch> GetBranches()
+        {
+            ProductRepository repo = new ProductRepository();
+            return repo.branches(_context);
+        }
+
+        [HttpPost("[action]")]
+        public bool ProductOutGoing([FromBody] productEntry entry)
+        {
+            return true;
+            //ProductRepository repo = new ProductRepository();
+            //var result = repo.ProductEntry(entry, _context);
+            //repo.UpdateInventory(entry, _context);
+            //_context.SaveChanges();
+            //return result;
+        }
+        
     }
 
     public class productEntry

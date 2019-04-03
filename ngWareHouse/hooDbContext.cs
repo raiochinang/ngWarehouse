@@ -17,5 +17,6 @@ namespace ngWareHouse
         public DbSet<ngpurchasedetails> purchaseDetails { get; set; }
         public DbSet<ngInventory> inventory { get; set; }
         public DbSet<ngInventoryTrx> inventorytrx { get; set; }
+        public DbSet<branch> branches { get; set; }
     }
 }

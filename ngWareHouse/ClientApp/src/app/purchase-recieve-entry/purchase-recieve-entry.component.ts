@@ -73,7 +73,6 @@ export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
   }
 
   itemSelected(event: MatAutocompleteSelectedEvent) {
-    debugger;
   }
 
   onDisplayWith(id: number) {
@@ -110,6 +109,5 @@ export class PurchaseRecieveEntryComponent implements OnInit, OnDestroy {
     } as PurchaseDetail
 
     this.purchaseDetails.push(detail);
-    debugger;
   }
 }

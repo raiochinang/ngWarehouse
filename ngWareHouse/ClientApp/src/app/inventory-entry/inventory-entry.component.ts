@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Product } from '../interfaces/product';
 import { Globals } from '../interfaces/globals';
 import { global } from '@angular/compiler/src/util';
+import { Data } from '../interfaces/data';
 
 @Component({
   selector: 'app-inventory-entry',
@@ -77,7 +78,6 @@ export class InventoryEntryComponent implements OnInit {
 
     var url = this.baseURL + 'api/Product/ProductEntry';
     this.http.post<boolean>(url, item).subscribe(res => {
-      debugger;
     });
 
 
@@ -91,17 +91,4 @@ export class InventoryEntryComponent implements OnInit {
   onCancel() {
     this.entryForm.reset();
   }
-}
-
-interface Data {
-  branch: string;
-  barcode: string;
-  lotNumber: string;
-  item: string;
-  quantity: number;
-  expiryDate: string;
-  comment: string;
-  productId: number;
-  locationId: number;
-  userId: number;
 }
