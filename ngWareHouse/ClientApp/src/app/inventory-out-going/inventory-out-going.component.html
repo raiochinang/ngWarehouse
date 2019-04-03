@@ -1,0 +1,15 @@
+<form class="form" [formGroup]="form">
+  <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)"></barcode-scanner-livestream>
+  <div [hidden]="!barcodeValue">
+    {{barcodeValue}}
+  </div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Barcode" formControlName="barcode" (change)="scan($event)" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select required formControlName="location">
+      <mat-option *ngFor="let location of locations" [value]="location.value">{{ location.text }}</mat-option>
+    </mat-select>
+    <mat-label>Transfer to:</mat-label>
+  </mat-form-field>
+</form>
