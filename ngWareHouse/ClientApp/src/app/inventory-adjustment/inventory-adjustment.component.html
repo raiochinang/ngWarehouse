@@ -1,0 +1,19 @@
+<form class="form" [formGroup]="form">
+  <mat-form-field class="control-container">
+    <input matInput placeholder="Barcode" formControlName="barcode" required>
+  </mat-form-field>
+  <span class="control-container">
+    <button mat-raised-button color="primary" class="full-width" (click)="onSearch()" [disabled]="!form.valid">Search</button>
+  </span>
+  <mat-divider></mat-divider>
+
+  <mat-form-field class="control-container">
+    <input matInput placeholder="Item" required>
+  </mat-form-field>
+  <mat-form-field class="control-container">
+    <input type="number" matInput placeholder="Quantity" required>
+  </mat-form-field>
+  <div class="control-container">
+    <button mat-raised-button color="primary" class="full-width" (click)="onUpdate()">Update</button>
+  </div>
+</form>

@@ -33,6 +33,8 @@ import { Globals } from './interfaces/globals';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { InventoryEntryComponent } from './inventory-entry/inventory-entry.component';
 import { InventoryOutGoingComponent } from './inventory-out-going/inventory-out-going.component';
+import { InventoryReportComponent } from './inventory-report/inventory-report.component';
+import { InventoryAdjustmentComponent } from './inventory-adjustment/inventory-adjustment.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { InventoryOutGoingComponent } from './inventory-out-going/inventory-out-
     PurchaseRecieveComponent,
     PurchaseRecieveEntryComponent,
     InventoryEntryComponent,
-    InventoryOutGoingComponent
+    InventoryOutGoingComponent,
+    InventoryReportComponent,
+    InventoryAdjustmentComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -72,7 +76,7 @@ import { InventoryOutGoingComponent } from './inventory-out-going/inventory-out-
     MatDatepickerModule,
     MatNativeDateModule ,
     RouterModule.forRoot([
-      { path: '', component: LogInComponent, pathMatch: 'full' },
+      { path: 'default', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'log-in', component: LogInComponent },
@@ -81,7 +85,10 @@ import { InventoryOutGoingComponent } from './inventory-out-going/inventory-out-
       { path: 'purchase-receive-entry/:id', component: PurchaseRecieveEntryComponent },
       { path: 'inventory-entry', component: InventoryEntryComponent, pathMatch: 'full' },
       { path: 'inventory-out-going', component: InventoryOutGoingComponent, pathMatch: 'full' },
-      { path: '1', component: InventoryOutGoingComponent, pathMatch: 'full' },
+      { path: 'inventory-adjustment', component: InventoryAdjustmentComponent, pathMatch: 'full' },
+      { path: 'inventory-report', component: InventoryReportComponent, pathMatch: 'full' },
+
+      { path: '', component: InventoryAdjustmentComponent, pathMatch: 'full' },
     ])
   ],
   providers: [Globals],
