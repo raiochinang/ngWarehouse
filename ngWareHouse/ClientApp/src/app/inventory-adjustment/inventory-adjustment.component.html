@@ -1,19 +1,33 @@
 <form class="form" [formGroup]="form">
-  <mat-form-field class="control-container">
-    <input matInput placeholder="Barcode" formControlName="barcode" required>
-  </mat-form-field>
-  <span class="control-container">
-    <button mat-raised-button color="primary" class="full-width" (click)="onSearch()" [disabled]="!form.valid">Search</button>
-  </span>
+  <div>
+    <mat-form-field class="control-container">
+      <input matInput placeholder="Barcode" formControlName="barcode" (change)="onScan()" required>
+    </mat-form-field>
+  </div>
+  <div *ngIf="itemLabel!=''">
+    <span class="control-container control-label">
+      <span class="label">Item:</span>
+      <span>{{itemLabel}}</span>
+    </span>
+    <span class="control-container control-label">
+      <span class="label">Lot Number:</span>
+      <span>{{lotnumber}}</span>
+    </span>
+    <span class="control-container control-label">
+      <span class="label">Quantity:</span>
+      <span>{{quantity}}</span>
+    </span>
+    <mat-form-field class="control-container">
+      <input type="number" matInput placeholder="Quantity" formControlName="quantity" required>
+    </mat-form-field>
+    <mat-form-field class="control-container">
+      <textarea matInput placeholder="Leave a comment" formControlName="comment"></textarea>
+    </mat-form-field>
+    <span class="control-container">
+      <button mat-raised-button color="primary" class="full-width" (click)="onUpdate()">Update</button>
+    </span>
+  </div>
   <mat-divider></mat-divider>
 
-  <mat-form-field class="control-container">
-    <input matInput placeholder="Item" required>
-  </mat-form-field>
-  <mat-form-field class="control-container">
-    <input type="number" matInput placeholder="Quantity" required>
-  </mat-form-field>
-  <div class="control-container">
-    <button mat-raised-button color="primary" class="full-width" (click)="onUpdate()">Update</button>
-  </div>
+
 </form>

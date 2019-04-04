@@ -76,7 +76,7 @@ import { InventoryAdjustmentComponent } from './inventory-adjustment/inventory-a
     MatDatepickerModule,
     MatNativeDateModule ,
     RouterModule.forRoot([
-      { path: 'default', component: LogInComponent, pathMatch: 'full' },
+      { path: '', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'log-in', component: LogInComponent },
@@ -88,7 +88,7 @@ import { InventoryAdjustmentComponent } from './inventory-adjustment/inventory-a
       { path: 'inventory-adjustment', component: InventoryAdjustmentComponent, pathMatch: 'full' },
       { path: 'inventory-report', component: InventoryReportComponent, pathMatch: 'full' },
 
-      { path: '', component: InventoryAdjustmentComponent, pathMatch: 'full' },
+      { path: 'a', component: InventoryAdjustmentComponent, pathMatch: 'full' },
     ])
   ],
   providers: [Globals],

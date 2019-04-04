@@ -8,20 +8,19 @@
       <mat-list-item>  {{user.branch}}</mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+        <a class="nav-link text-dark" [routerLinkActive]='["link-active"]' [routerLink]='["/"]'>Home</a>
       </mat-list-item>
       <mat-list-item>
-        <a class="nav-link text-dark" [routerLink]='["/inventory-entry"]'>Inventory Entry</a>
+        <a class="nav-link text-dark" [routerLinkActive]='["link-active"]' [routerLink]='["/inventory-entry"]'>Inventory Entry</a>
       </mat-list-item>
       <mat-list-item>
-        <a class="nav-link text-dark" [routerLink]='["/inventory-out-going"]'>Inventory Delivery</a>
+        <a class="nav-link text-dark" [routerLinkActive]='["link-active"]' [routerLink]='["/inventory-out-going"]'>Inventory Delivery</a>
       </mat-list-item>
       <mat-list-item>
-        <a class="nav-link text-dark" [routerLink]='["/inventory-adjustment"]'>Adjustment</a>
+        <a class="nav-link text-dark" [routerLinkActive]='["link-active"]' [routerLink]='["/inventory-adjustment"]'>Adjustment</a>
       </mat-list-item>
-      <mat-divider></mat-divider>
       <mat-list-item>
-        <a class="nav-link text-dark" [routerLink]='["/inventory-report"]'>Inventory Report</a>
+        <a class="nav-link text-dark" [routerLinkActive]='["link-active"]' [routerLink]='["/inventory-report"]'>Inventory Report</a>
       </mat-list-item>
     </mat-list>
   </mat-drawer>

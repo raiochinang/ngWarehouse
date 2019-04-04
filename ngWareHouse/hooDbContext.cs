@@ -19,6 +19,7 @@ namespace ngWareHouse
         public DbSet<ngInventoryTrx> inventorytrx { get; set; }
         public DbSet<branch> branches { get; set; }
         public DbSet<ngInventoryTrxOutGoing> inventorytrxoutgoing { get; set; }
-        
+        public DbSet<ngInventoryAdjustment> inventoryadjustment { get; set; }
+        public DbSet<inventory_view> inventory_view { get; set; }
     }
 }

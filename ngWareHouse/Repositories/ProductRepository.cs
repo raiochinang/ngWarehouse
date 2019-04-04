@@ -68,7 +68,7 @@ namespace ngWareHouse.Repositories
                 record.UserId = entry.userId;
                 record.LocationId = entry.locationId;
             }
-           
+
         }
 
         public bool InventoryOutGoing(productEntry entry, hooDbContext db)
@@ -99,6 +99,41 @@ namespace ngWareHouse.Repositories
                 record.Quantity -= entry.quantity;
             }
 
+        }
+
+        public ngInventory GetProductByBarcode(productEntry entry, hooDbContext db)
+        {
+            var record = db.inventory.Where(r => r.LocationId == entry.locationId && r.ProductId == entry.productId && r.LotNumber == entry.lotNumber).SingleOrDefault();
+            return record;
+        }
+
+        public bool ProductAdjust(productEntry entry, hooDbContext db)
+        {
+            var e = new ngInventoryAdjustment
+            {
+                branch = entry.branch,
+                lotNumber = entry.lotNumber,
+                item = entry.item,
+                updatequantity = entry.quantity,
+                productId = entry.productId,
+                locationId = entry.locationId,
+                userId = entry.userId,
+                comment = entry.comment
+            };
+            db.inventoryadjustment.Add(e);
+
+            var record = db.inventory.Where(r => r.LocationId == entry.locationId && r.ProductId == entry.productId && r.LotNumber == entry.lotNumber).SingleOrDefault();
+            if (record != null)
+            {
+                record.Quantity = entry.quantity;
+            }
+            return true;
+        }
+
+        public IEnumerable<inventory_view> GetInventoryByLocation(int locationId, hooDbContext db)
+        {
+            var record = db.inventory_view.Where(r=> r.locationId == locationId).ToList();
+            return record;
         }
     }
 }

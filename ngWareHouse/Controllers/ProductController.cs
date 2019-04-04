@@ -51,7 +51,33 @@ namespace ngWareHouse.Controllers
             _context.SaveChanges();
             return result;
         }
-        
+
+        [HttpPost("[action]")]
+        public ngInventory GetProductByBarcode([FromBody] productEntry entry)
+        {
+            ProductRepository repo = new ProductRepository();
+            var result = repo.GetProductByBarcode(entry, _context);
+            _context.SaveChanges();
+            return result;
+        }
+
+        [HttpPost("[action]")]
+        public bool ProductAdjust([FromBody] productEntry entry)
+        {
+            ProductRepository repo = new ProductRepository();
+            var result = repo.ProductAdjust(entry, _context);
+            _context.SaveChanges();
+            return result;
+        }
+
+        [HttpPost("[action]")]
+        public IEnumerable<inventory_view> GetInventoryByLocation([FromBody] productEntry entry)
+        {
+            ProductRepository repo = new ProductRepository();
+            return repo.GetInventoryByLocation(entry.locationId, _context);
+        }
+
+
     }
 
     public class productEntry
