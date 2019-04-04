@@ -84,7 +84,6 @@ export class InventoryAdjustmentComponent implements OnInit {
     else {
       this.item.quantity = x.quantity;
     }
-    debugger;
     this.item.comment = x.comment;
     this.http.post<boolean>(url, this.item).subscribe(res => {
       this.form.reset();

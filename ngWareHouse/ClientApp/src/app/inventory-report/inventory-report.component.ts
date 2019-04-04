@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Globals } from '../interfaces/globals';
+import { Data } from '../interfaces/data';
 
 @Component({
   selector: 'app-inventory-report',
@@ -7,7 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InventoryReportComponent implements OnInit {
 
-  constructor() { }
+  baseURL: string = "";
+  items: Data[] = [];
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private globals: Globals) {
+    this.baseURL = baseUrl;
+    var url = this.baseURL + 'api/Product/GetInventoryByLocation';
+    var item = {
+      locationId: globals.user.branch_id
+    } as Data;
+    this.http.post<Data[]>(url, item).subscribe(res => {
+      this.items = res;
+    });
+  }
 
   ngOnInit() {
   }
