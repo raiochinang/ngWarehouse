@@ -12,14 +12,13 @@ export class AppComponent implements OnInit {
 
   constructor(private logService: LogService, private router: Router) {
     logService.getlogin.subscribe(result => {
-      //if (result) {
-      //  this.show = true;
-      //  this.user = result;
-      //}
-      //else {
-      //  this.show = false;
-      //}
-      this.show = true;
+      if (result) {
+        this.show = true;
+        this.user = result;
+      }
+      else {
+        this.show = false;
+      }
     });
   }
 

@@ -86,7 +86,7 @@ import { InventoryAdjustmentComponent } from './inventory-adjustment/inventory-a
       { path: 'inventory-entry', component: InventoryEntryComponent, pathMatch: 'full' },
       { path: 'inventory-out-going', component: InventoryOutGoingComponent, pathMatch: 'full' },
       { path: 'inventory-adjustment', component: InventoryAdjustmentComponent, pathMatch: 'full' },
-      { path: 'inventory-report', component: InventoryReportComponent, pathMatch: 'full' },
+      { path: 'inventory-report', component: InventoryReportComponent, pathMatch: 'full' },      
     ])
   ],
   providers: [Globals],
