@@ -20,9 +20,14 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </span>
+    <span class="container">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Reference #" formControlName="reference">
+      </mat-form-field>
+    </span>
     <div class="container">
       <mat-form-field class="comment">
-        <textarea matInput placeholder="Leave a comment" formControlName="comment" ></textarea>
+        <textarea matInput placeholder="Leave a comment" formControlName="comment"></textarea>
       </mat-form-field>
     </div>
     <div class="button-row">
@@ -43,6 +48,7 @@
         <th>Item</th>
         <th>Lot Number</th>
         <th>Quantity</th>
+        <th>Reference</th>
         <th>Expiry Date</th>
         <th>Location</th>
         <th>Comment</th>
@@ -53,6 +59,7 @@
         <td>{{ item.item }}</td>
         <td>{{ item.lotNumber }}</td>
         <td>{{ item.quantity }}</td>
+        <td>{{ item.reference }}</td>
         <td>{{ item.expiryDate }}</td>
         <td>{{ item.branch }}</td>
         <td>{{ item.comment }}</td>

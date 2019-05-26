@@ -10,4 +10,5 @@ export interface Data {
   locationId: number;
   userId: number;
   locationIdFrom: number;
+  reference: string;
 }

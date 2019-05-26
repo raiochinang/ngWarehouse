@@ -34,7 +34,8 @@ export class InventoryEntryComponent implements OnInit {
     barcode: new FormControl(''),
     quantity: new FormControl(''),
     expiryDate: new FormControl(''),
-    comment: new FormControl('')
+    comment: new FormControl(''),
+    reference: new FormControl('')
   });
 
   ngOnInit() {
@@ -62,19 +63,20 @@ export class InventoryEntryComponent implements OnInit {
   }
 
   onConfirm() {
-    var x = this.entryForm.value;
+    var entry = this.entryForm.value;
     var item = {
       branch: this.branch,
       barcode: this.barcode,
       lotNumber: this.lotnumber,
       item: this.itemLabel,
       productId: this.itemId,
-      quantity: x.quantity,
-      expiryDate: x.expiryDate.toDateString(),
-      comment: x.comment,
+      quantity: entry.quantity,
+      expiryDate: entry.expiryDate.toDateString(),
+      comment: entry.comment,
       locationId: this.globals.user.branch_id,
       userId: this.globals.user.id,
-      locationIdFrom: this.globals.user.branch_id
+      locationIdFrom: this.globals.user.branch_id,
+      reference: entry.reference,
     } as Data;
 
     var url = this.baseURL + 'api/Product/ProductEntry';

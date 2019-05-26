@@ -1,4 +1,7 @@
 <form class="form" [formGroup]="form">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Reference" formControlName="reference">
+  </mat-form-field>
   <mat-form-field>
     <mat-select required class="full-width" formControlName="location">
       <mat-option *ngFor="let location of locations" [value]="location.id">{{ location.name }}</mat-option>
@@ -17,6 +20,7 @@
         <th>Lot Number</th>
         <th>Quantity</th>
         <th>Location</th>
+        <th>Reference</th>
       </tr>
     </thead>
     <tbody>
@@ -25,6 +29,7 @@
         <td>{{ item.lotNumber }}</td>
         <td>{{ item.quantity }}</td>
         <td>{{ item.branch }}</td>
+        <td>{{ item.reference }}</td>
       </tr>
     </tbody>
   </table>

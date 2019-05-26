@@ -94,5 +94,6 @@ namespace ngWareHouse.Controllers
         public int locationId { get; set; }
         public int userId { get; set; }
         public int locationIdFrom { get; set; }
+        public string reference { get; set; }
     }
 }

@@ -32,7 +32,8 @@ namespace ngWareHouse.Repositories
                 comment = entry.comment,
                 productId = entry.productId,
                 locationId = entry.locationId,
-                userId = entry.userId
+                userId = entry.userId,
+                reference = entry.reference
             };
             db.inventorytrx.Add(e);
 
@@ -83,7 +84,9 @@ namespace ngWareHouse.Repositories
                 productId = entry.productId,
                 locationId = entry.locationId,
                 userId = entry.userId,
-                locationIdFrom = entry.locationIdFrom
+                locationIdFrom = entry.locationIdFrom,
+                reference = entry.reference
+                
             };
             db.inventorytrxoutgoing.Add(e);
 
@@ -132,7 +135,7 @@ namespace ngWareHouse.Repositories
 
         public IEnumerable<inventory_view> GetInventoryByLocation(int locationId, hooDbContext db)
         {
-            var record = db.inventory_view.Where(r=> r.locationId == locationId).ToList();
+            var record = db.inventory_view.Where(r => r.locationId == locationId).OrderBy(o => o.item).ToList();
             return record;
         }
     }

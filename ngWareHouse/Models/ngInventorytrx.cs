@@ -18,5 +18,6 @@ namespace ngWareHouse.Models
         public int productId { get; set; }
         public int locationId { get; set; }
         public int userId { get; set; }
+        public string reference { get; set; }
     }
 }

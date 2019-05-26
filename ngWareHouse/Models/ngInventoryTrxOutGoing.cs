@@ -17,5 +17,6 @@ namespace ngWareHouse.Models
         public int locationIdFrom { get; set; }
         public int userId { get; set; }
         public string branch { get; set; }
+        public string reference { get; set; }
     }
 }

@@ -12,7 +12,7 @@
     <tr *ngFor="let item of items">
       <td>{{ item.item }}</td>
       <td>{{ item.lotNumber }}</td>
-      <td>{{ item.quantity }}</td>
+      <td>{{ item.quantity  | number: '2.' }}</td>
       <td>{{ item.expiryDate }}</td>
       <td>{{ item.branch }}</td>
     </tr>

@@ -15,6 +15,7 @@ export class InventoryOutGoingComponent implements OnInit {
   form = new FormGroup({
     barcode: new FormControl(''),
     location: new FormControl(''),
+    reference: new FormControl(''),
   });
   baseURL: string = "";
   locations: Branch[];
@@ -42,12 +43,12 @@ export class InventoryOutGoingComponent implements OnInit {
   }
 
   scan(ev: any) {
-
-    var x = this.form.value;
-    var value = x.barcode.split('*');
-    var branchList = this.locations.filter(b => b.id === x.location);
+    var form = this.form.value;
+    var value = form.barcode.split('*');
+    var branchList = this.locations.filter(b => b.id === form.location);
     var branchName = "";
     var branchId = 0;
+    var reference = form.reference;
     if (branchList.length > 0) {
       branchName = branchList[0].name;
       branchId = branchList[0].id;
@@ -84,7 +85,8 @@ export class InventoryOutGoingComponent implements OnInit {
         userId: this.globals.user.id,
         expiryDate: '',
         comment: '',
-        locationIdFrom: this.globals.user.branch_id
+        locationIdFrom: this.globals.user.branch_id,
+        reference: reference,
       } as Data;
       this.items.push(item);
       this.saveToDataBase(item);
@@ -93,7 +95,6 @@ export class InventoryOutGoingComponent implements OnInit {
 
   saveToDataBase(item: Data) {
     var url = this.baseURL + 'api/Product/ProductOutGoing';
-    debugger;
     this.http.post<boolean>(url, item).subscribe();
   }
 
