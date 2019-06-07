@@ -8,11 +8,11 @@ import { Product } from 'src/app/interfaces/product';
 import { Globals } from 'src/app/interfaces/globals';
 
 @Component({
-  selector: 'app-inventory-in-dialog',
-  templateUrl: './inventory-in-dialog.component.html',
-  styleUrls: ['./inventory-in-dialog.component.css']
+  selector: 'app-inventory-out-dialog',
+  templateUrl: './inventory-out-dialog.component.html',
+  styleUrls: ['./inventory-out-dialog.component.css']
 })
-export class InventoryInDialogComponent implements OnInit {
+export class InventoryOutDialogComponent implements OnInit {
 
   public products: Product[];
   public itemLabel: string = "";
@@ -24,10 +24,11 @@ export class InventoryInDialogComponent implements OnInit {
   public reference: string = "";
   public comments: string = "";
   public error: boolean = false;
+  public remainingQty: number = 0;
   public errorMessage: string = "";
 
   constructor(
-    public dialogRef: MatDialogRef<InventoryInDialogComponent>,
+    public dialogRef: MatDialogRef<InventoryOutDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WareHouseTransaction,
     private globals: Globals,
     private warehouseService: WarehouseService
@@ -35,6 +36,16 @@ export class InventoryInDialogComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.warehouseService.products;
+
+    this.warehouseService.master.subscribe(response => {
+      if (response === null) {
+        this.remainingQty = 0;
+      }
+      else {
+        this.remainingQty = response.quantity;
+      }
+      
+    });
   }
 
   onNoClick(): void {
@@ -52,10 +63,19 @@ export class InventoryInDialogComponent implements OnInit {
         this.lotnumber = lotnumber;
         this.barcode = "";
         this.warehouseService.productName = productList[0].item;
+        let model = {
+          locationId: this.globals.user.branch_id,
+          productId: this.productId,
+          lotNumber: this.lotnumber
+        } as WareHouseTransaction;
+        this.warehouseService.getRemainingQuantity(model);
+
+
       }
       else {
         this.itemLabel = "ITEM NOT FOUND!"
         this.warehouseService.productName = "";
+        this.remainingQty = 0;
         this.formReset();
       }
     }
@@ -84,6 +104,12 @@ export class InventoryInDialogComponent implements OnInit {
       return;
     }
 
+    if (this.quantity > this.remainingQty) {
+      this.error = true;
+      this.errorMessage = "Remaining quantity is greater than the quantity.";
+      return;
+    }
+
     if (this.expirationDate == null) {
       this.error = true;
       this.errorMessage = "Check the Expiration date.";
@@ -100,11 +126,10 @@ export class InventoryInDialogComponent implements OnInit {
       lotNumber: this.lotnumber,
       comment: this.comments,
       reference: this.reference,
-      expirationDate: this.expirationDate,
       userId: this.globals.user.branch_id,
       lastUpdate: new Date(),
       quantity: this.quantity,
-      transactionType: "in"
+      transactionType: "out"
     } as WareHouseTransaction;
 
     if (!this.error) {

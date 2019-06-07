@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { InventoryOutDialogComponent } from './inventory-out-dialog/inventory-out-dialog.component';
 
 
 @NgModule({
@@ -21,10 +22,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     InventoryOutComponent,
     InventoryAdjustmentComponent,
     InventoryConsumptionComponent,
-    InventoryInDialogComponent
+    InventoryInDialogComponent,
+    InventoryOutDialogComponent
   ],
   entryComponents: [
-    InventoryInDialogComponent
+    InventoryInDialogComponent,
+    InventoryOutDialogComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-  Inventory In
+  Inventory Out
 </h1>
 <div mat-dialog-content>
   <mat-form-field appearance="outline" class="full-width">
@@ -14,15 +14,13 @@
     <label>Lot Number: </label>
     <label>{{lotnumber}}</label>
   </div>
+  <div>
+    <label>Remaining Quantity: </label>
+    <label>{{remainingQty}}</label>
+  </div>
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>*Quantity</mat-label>
     <input matInput placeholder="Quantity" [(ngModel)]="quantity" type="number" />
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>*Expiry Date</mat-label>
-    <input matInput [matDatepicker]="picker" placeholder="Expiry Date" [(ngModel)]="expirationDate">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Reference #</mat-label>

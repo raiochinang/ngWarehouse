@@ -71,5 +71,14 @@ namespace ngWareHouse.Repositories
 
             return model;
         }
+
+        public WarehouseMaster GetRemainingQuantity(WareHouseTransaction model, hooDbContext db) {
+            var master = db.WareHouseMaster.Where(m =>
+                        m.LocationId == model.LocationId &&
+                        m.ProductId == model.ProductId &&
+                        m.LotNumber == model.LotNumber
+                    ).SingleOrDefault();
+            return master;
+        }
     }
 }

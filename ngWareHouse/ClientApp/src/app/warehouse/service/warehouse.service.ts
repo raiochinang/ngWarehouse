@@ -3,6 +3,7 @@ import { WareHouseTransaction } from 'src/app/interfaces/ware-house-transaction'
 import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/interfaces/product';
+import { WarehouseMaster } from 'src/app/interfaces/warehouse-master';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Product } from 'src/app/interfaces/product';
 export class WarehouseService {
 
   transaction: Subject<WareHouseTransaction> = new Subject<WareHouseTransaction>();
+  master: Subject<WarehouseMaster> = new Subject<WarehouseMaster>();
   products: Product[] = [];
   productName: string = "";
 
@@ -30,5 +32,12 @@ export class WarehouseService {
     this.http.get<Product[]>(url).subscribe(result => {
       this.products = result;
     }, error => console.error(error));
+  }
+
+  public getRemainingQuantity(model: WareHouseTransaction) {
+    var url = this.baseUrl + 'api/Transaction/getRemainingQuantity';
+    this.http.post<WarehouseMaster>(url, model).subscribe(response => {
+      this.master.next(response);
+    });
   }
 }
