@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>
+  Inventory Consumption
+</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Barcode</mat-label>
+    <input matInput placeholder="Barcode" [(ngModel)]="barcode" (change)="onScan($event.target.value)" />
+  </mat-form-field>
+  <div>
+    <label>Product: </label>
+    <label>{{itemLabel}}</label>
+  </div>
+  <div>
+    <label>Lot Number: </label>
+    <label>{{lotnumber}}</label>
+  </div>
+  <div>
+    <label>Remaining Quantity: </label>
+    <label>{{remainingQty}}</label>
+  </div>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>*Quantity</mat-label>
+    <input matInput placeholder="Quantity" [(ngModel)]="quantity" type="number" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Reference #</mat-label>
+    <input matInput placeholder="Reference #" [(ngModel)]="reference">
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="comment full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Leave a comment" [(ngModel)]="comments"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onNoClick()">
+    Close
+  </button>
+  <button mat-raised-button color="primary" (click)="onSaveClick()" cdkFocusInitial>
+    Save
+  </button>
+  <span class="error-row" *ngIf="error">{{errorMessage}}</span>
+</div>

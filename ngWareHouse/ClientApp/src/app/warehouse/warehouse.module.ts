@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { InventoryOutDialogComponent } from './inventory-out-dialog/inventory-out-dialog.component';
 import { InventoryAdjustmentDialogComponent } from './inventory-adjustment-dialog/inventory-adjustment-dialog.component';
+import { InventoryConsumptionDialogComponent } from './inventory-consumption-dialog/inventory-consumption-dialog.component';
 
 
 @NgModule({
@@ -25,12 +26,14 @@ import { InventoryAdjustmentDialogComponent } from './inventory-adjustment-dialo
     InventoryConsumptionComponent,
     InventoryInDialogComponent,
     InventoryOutDialogComponent,
-    InventoryAdjustmentDialogComponent
+    InventoryAdjustmentDialogComponent,
+    InventoryConsumptionDialogComponent
   ],
   entryComponents: [
     InventoryInDialogComponent,
     InventoryOutDialogComponent,
-    InventoryAdjustmentDialogComponent
+    InventoryAdjustmentDialogComponent,
+    InventoryConsumptionDialogComponent
   ],
   imports: [
     CommonModule,

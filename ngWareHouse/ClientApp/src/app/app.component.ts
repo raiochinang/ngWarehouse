@@ -37,9 +37,9 @@ export class AppComponent implements OnInit {
             { routerDesc: "Inventory In", routerLink: "/inv-in" },
             { routerDesc: "Inventory Out", routerLink: "/inv-out" },
             { routerDesc: "Inventory Adjustment", routerLink: "/inv-adj" },
+            { routerDesc: "Inventory Consumption", routerLink: "/inv-con" },
 
-            { routerDesc: "Adjustment old", routerLink: "/inventory-adjustment" },
-            { routerDesc: "Consumption", routerLink: "/inventory-consumption" },
+           
             { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
           ];
         }
@@ -47,17 +47,17 @@ export class AppComponent implements OnInit {
         else if (result.role_name == "Auditor") {
           this.links = [
             { routerDesc: "Inventory Adjustment", routerLink: "/inv-adj" },
+
             { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
           ];
         }
         //User
         else {
           this.links = [
-            { routerDesc: "Inventory-In", routerLink: "/inv-in" },
-            { routerDesc: "Inventory-Out", routerLink: "/inv-out" },
+            { routerDesc: "Inventory In", routerLink: "/inv-in" },
+            { routerDesc: "Inventory Out", routerLink: "/inv-out" },
+            { routerDesc: "Inventory Consumption", routerLink: "/inv-con" },
 
-           
-            { routerDesc: "Consumption", routerLink: "/inventory-consumption" },
             { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
           ];
         }
