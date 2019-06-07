@@ -14,6 +14,7 @@ export class WarehouseService {
   master: Subject<WarehouseMaster> = new Subject<WarehouseMaster>();
   products: Product[] = [];
   productName: string = "";
+  report: any[] = [];
 
   constructor(
     private http: HttpClient,

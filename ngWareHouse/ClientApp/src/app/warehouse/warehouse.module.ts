@@ -16,6 +16,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { InventoryOutDialogComponent } from './inventory-out-dialog/inventory-out-dialog.component';
 import { InventoryAdjustmentDialogComponent } from './inventory-adjustment-dialog/inventory-adjustment-dialog.component';
 import { InventoryConsumptionDialogComponent } from './inventory-consumption-dialog/inventory-consumption-dialog.component';
+import { InventoryInReportComponent } from './inventory-in-report/inventory-in-report.component';
+import { InventoryOutReportComponent } from './inventory-out-report/inventory-out-report.component';
+import { InventoryAdjustmentReportComponent } from './inventory-adjustment-report/inventory-adjustment-report.component';
+import { InventoryConsumptionReportComponent } from './inventory-consumption-report/inventory-consumption-report.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { InventoryConsumptionDialogComponent } from './inventory-consumption-dia
     InventoryInDialogComponent,
     InventoryOutDialogComponent,
     InventoryAdjustmentDialogComponent,
-    InventoryConsumptionDialogComponent
+    InventoryConsumptionDialogComponent,
+    InventoryInReportComponent,
+    InventoryOutReportComponent,
+    InventoryAdjustmentReportComponent,
+    InventoryConsumptionReportComponent
   ],
   entryComponents: [
     InventoryInDialogComponent,
@@ -48,7 +56,12 @@ import { InventoryConsumptionDialogComponent } from './inventory-consumption-dia
       { path: 'inv-in', component: InventoryInComponent, pathMatch: 'full' },
       { path: 'inv-out', component: InventoryOutComponent, pathMatch: 'full' },
       { path: 'inv-adj', component: InventoryAdjustmentComponent, pathMatch: 'full' },
-      { path: 'inv-con', component: InventoryConsumptionComponent, pathMatch: 'full' }
+      { path: 'inv-con', component: InventoryConsumptionComponent, pathMatch: 'full' },
+
+      { path: 'inv-in-report', component: InventoryInReportComponent, pathMatch: 'full' },
+      { path: 'inv-out-report', component: InventoryOutReportComponent, pathMatch: 'full' },
+      { path: 'inv-adj-report', component: InventoryAdjustmentReportComponent, pathMatch: 'full' },
+      { path: 'inv-con-report', component: InventoryConsumptionReportComponent, pathMatch: 'full' }
     ])
   ]
 })

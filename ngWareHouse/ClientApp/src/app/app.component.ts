@@ -38,17 +38,20 @@ export class AppComponent implements OnInit {
             { routerDesc: "Inventory Out", routerLink: "/inv-out" },
             { routerDesc: "Inventory Adjustment", routerLink: "/inv-adj" },
             { routerDesc: "Inventory Consumption", routerLink: "/inv-con" },
-
-           
-            { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
+            { routerDesc: "Inventory In Report", routerLink: "/inv-in-report" },
+            { routerDesc: "Inventory Out Report", routerLink: "/inv-out-report" },
+            { routerDesc: "Inventory Adjustment Report", routerLink: "/inv-adj-report" },
+            { routerDesc: "Inventory Consumption Report", routerLink: "/inv-con-report" },
           ];
         }
         //Auditor
         else if (result.role_name == "Auditor") {
           this.links = [
             { routerDesc: "Inventory Adjustment", routerLink: "/inv-adj" },
-
-            { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
+            { routerDesc: "Inventory In Report", routerLink: "/inv-in-report" },
+            { routerDesc: "Inventory Out Report", routerLink: "/inv-out-report" },
+            { routerDesc: "Inventory Adjustment Report", routerLink: "/inv-adj-report" },
+            { routerDesc: "Inventory Consumption Report", routerLink: "/inv-con-report" },
           ];
         }
         //User
@@ -57,8 +60,10 @@ export class AppComponent implements OnInit {
             { routerDesc: "Inventory In", routerLink: "/inv-in" },
             { routerDesc: "Inventory Out", routerLink: "/inv-out" },
             { routerDesc: "Inventory Consumption", routerLink: "/inv-con" },
-
-            { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
+            { routerDesc: "Inventory In Report", routerLink: "/inv-in-report" },
+            { routerDesc: "Inventory Out Report", routerLink: "/inv-out-report" },
+            { routerDesc: "Inventory Adjustment Report", routerLink: "/inv-adj-report" },
+            { routerDesc: "Inventory Consumption Report", routerLink: "/inv-con-report" },
           ];
         }
       }

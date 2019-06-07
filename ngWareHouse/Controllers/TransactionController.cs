@@ -31,6 +31,15 @@ namespace ngWareHouse.Controllers
             TransactionRepository repository = new TransactionRepository();
             return repository.GetRemainingQuantity(model, _context);
         }
+
+        [HttpPost("[action]")]
+        public List<ReportModel> generateReport([FromBody] WareHouseTransaction model)
+        {
+            TransactionRepository repository = new TransactionRepository();
+            return repository.GenerateReport(model, _context);
+        }
+
+
         
     }
 }

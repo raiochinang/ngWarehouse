@@ -121,7 +121,7 @@ export class InventoryAdjustmentDialogComponent implements OnInit {
       lotNumber: this.lotnumber,
       comment: this.comments,
       reference: this.reference,
-      userId: this.globals.user.branch_id,
+      userId: this.globals.user.id,
       lastUpdate: new Date(),
       quantity: this.quantity,
       transactionType: "adjustment"

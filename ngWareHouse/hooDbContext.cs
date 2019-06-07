@@ -26,6 +26,7 @@ namespace ngWareHouse
         //New Approach
         public DbSet<WarehouseMaster> WareHouseMaster { get; set; }
         public DbSet<WareHouseTransaction> WareHouseTransaction { get; set; }
+        public DbSet<ReportModel> ReportModel { get; set; }
 
     }
 }

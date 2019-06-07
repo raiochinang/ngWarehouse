@@ -7,7 +7,7 @@ namespace ngWareHouse.Models
 {
     public partial class dscr_user_roles
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string user_name { get; set; }
         public string password { get; set; }
         public string full_name_fld { get; set; }

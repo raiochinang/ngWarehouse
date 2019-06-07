@@ -101,7 +101,7 @@ export class InventoryInDialogComponent implements OnInit {
       comment: this.comments,
       reference: this.reference,
       expirationDate: this.expirationDate,
-      userId: this.globals.user.branch_id,
+      userId: this.globals.user.id,
       lastUpdate: new Date(),
       quantity: this.quantity,
       transactionType: "in"

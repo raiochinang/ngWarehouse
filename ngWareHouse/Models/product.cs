@@ -7,7 +7,7 @@ namespace ngWareHouse.Models
 {
     public partial class product
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string item { get; set; }
         public string barcode { get; set; }
     }
