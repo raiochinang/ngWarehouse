@@ -14,7 +14,16 @@ export class LogInComponent implements OnInit {
   constructor(private logService: LogService, private router: Router) {
     logService.getlogin.subscribe(res => {
       if (res) {
-        this.router.navigateByUrl('/inv-in');
+        if (res.role_name == "Administrator") {
+          this.router.navigateByUrl('/inv-in');
+        }
+        else if (res.role_name == "Auditor") {
+          this.router.navigateByUrl('/inv-adj');
+        }
+        else {
+          this.router.navigateByUrl('/inv-in');
+        }
+       
         this.showWarning = false;
       }
       else {
