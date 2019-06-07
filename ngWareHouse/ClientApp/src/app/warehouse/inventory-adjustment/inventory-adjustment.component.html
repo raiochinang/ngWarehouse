@@ -1,3 +1,46 @@
-<p>
-  inventory-adjustment works!
-</p>
+<div class="button-row">
+  <button mat-raised-button color="primary" (click)="openDialog()">Inventory Adjustment</button>
+</div>
+<div class="filter-row">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+  </mat-form-field>
+</div>
+<div class="table-row">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--Product Column-->
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef>Product</th>
+      <td mat-cell *matCellDef="let element">{{element.product}}</td>
+    </ng-container>
+
+    <!--Quantity Column-->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+    </ng-container>
+
+    <!--Reference Column-->
+    <ng-container matColumnDef="reference">
+      <th mat-header-cell *matHeaderCellDef>Reference</th>
+      <td mat-cell *matCellDef="let element">{{element.reference}}</td>
+    </ng-container>
+
+    <!--Lot Number Column-->
+    <ng-container matColumnDef="lotNumber">
+      <th mat-header-cell *matHeaderCellDef>Lot Number</th>
+      <td mat-cell *matCellDef="let element">{{element.lotNumber}}</td>
+    </ng-container>
+
+    <!--Comment Column-->
+    <ng-container matColumnDef="comment">
+      <th mat-header-cell *matHeaderCellDef>Comment</th>
+      <td mat-cell *matCellDef="let element">{{element.comment}}</td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

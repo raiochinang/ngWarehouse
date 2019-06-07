@@ -34,19 +34,19 @@ export class AppComponent implements OnInit {
         //Administrator
         if (result.role_name == "Administrator") {
           this.links = [
-            { routerDesc: "Inventory-In", routerLink: "/inv-in" },
-            { routerDesc: "Inventory-Out", routerLink: "/inv-out" },
-          
-            { routerDesc: "Inventory-Out Old", routerLink: "/inventory-out-going" },
+            { routerDesc: "Inventory In", routerLink: "/inv-in" },
+            { routerDesc: "Inventory Out", routerLink: "/inv-out" },
+            { routerDesc: "Inventory Adjustment", routerLink: "/inv-adj" },
+
+            { routerDesc: "Adjustment old", routerLink: "/inventory-adjustment" },
             { routerDesc: "Consumption", routerLink: "/inventory-consumption" },
-            { routerDesc: "Adjustment", routerLink: "/inventory-adjustment" },
             { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
           ];
         }
         //Auditor
         else if (result.role_name == "Auditor") {
           this.links = [
-            { routerDesc: "Adjustment", routerLink: "/inventory-adjustment" },
+            { routerDesc: "Inventory Adjustment", routerLink: "/inv-adj" },
             { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
           ];
         }
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
             { routerDesc: "Inventory-In", routerLink: "/inv-in" },
             { routerDesc: "Inventory-Out", routerLink: "/inv-out" },
 
-            { routerDesc: "Inventory-Out old", routerLink: "/inventory-out-going" },
+           
             { routerDesc: "Consumption", routerLink: "/inventory-consumption" },
             { routerDesc: "Inventory In Report", routerLink: "/inventory-report" },
           ];

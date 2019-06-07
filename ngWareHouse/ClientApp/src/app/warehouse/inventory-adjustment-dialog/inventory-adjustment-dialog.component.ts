@@ -8,11 +8,11 @@ import { Product } from 'src/app/interfaces/product';
 import { Globals } from 'src/app/interfaces/globals';
 
 @Component({
-  selector: 'app-inventory-out-dialog',
-  templateUrl: './inventory-out-dialog.component.html',
-  styleUrls: ['./inventory-out-dialog.component.css']
+  selector: 'app-inventory-adjustment-dialog',
+  templateUrl: './inventory-adjustment-dialog.component.html',
+  styleUrls: ['./inventory-adjustment-dialog.component.css']
 })
-export class InventoryOutDialogComponent implements OnInit {
+export class InventoryAdjustmentDialogComponent implements OnInit {
 
   public products: Product[];
   public itemLabel: string = "";
@@ -28,7 +28,7 @@ export class InventoryOutDialogComponent implements OnInit {
   public errorMessage: string = "";
 
   constructor(
-    public dialogRef: MatDialogRef<InventoryOutDialogComponent>,
+    public dialogRef: MatDialogRef<InventoryAdjustmentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: WareHouseTransaction,
     private globals: Globals,
     private warehouseService: WarehouseService
@@ -44,7 +44,7 @@ export class InventoryOutDialogComponent implements OnInit {
       else {
         this.remainingQty = response.quantity;
       }
-      
+
     });
   }
 
@@ -95,19 +95,13 @@ export class InventoryOutDialogComponent implements OnInit {
   onCheckInput(): void {
     if (this.productId == 0) {
       this.error = true;
-      this.errorMessage = "Check require fields.";
+      this.errorMessage = "No Product in the inventory to be adjusted.";
       return;
     }
 
     if (this.quantity == 0) {
       this.error = true;
       this.errorMessage = "Quantity must greater the zero.";
-      return;
-    }
-
-    if (this.quantity > this.remainingQty) {
-      this.error = true;
-      this.errorMessage = "Remaining quantity is greater than the quantity.";
       return;
     }
 
@@ -130,7 +124,7 @@ export class InventoryOutDialogComponent implements OnInit {
       userId: this.globals.user.branch_id,
       lastUpdate: new Date(),
       quantity: this.quantity,
-      transactionType: "out"
+      transactionType: "adjustment"
     } as WareHouseTransaction;
 
     if (!this.error) {
