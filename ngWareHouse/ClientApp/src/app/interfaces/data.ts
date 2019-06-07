@@ -11,4 +11,6 @@ export interface Data {
   userId: number;
   locationIdFrom: number;
   reference: string;
+  transactionDate: Date;
+  brandCode: string;
 }

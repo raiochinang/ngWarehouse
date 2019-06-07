@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
@@ -7,7 +7,10 @@ import { Globals } from '../interfaces/globals';
 @Injectable({
   providedIn: 'root'
 })
-export class LogService {
+export class LogService implements OnInit {
+    ngOnInit(): void {
+      this.setHeaderLabel('');
+    }
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private globals: Globals) { }
 
@@ -16,6 +19,7 @@ export class LogService {
   //
   user: Subject<User> = new Subject<User>();
   _logout: Subject<boolean> = new Subject<boolean>();
+  public headerLabel: Subject<string> = new Subject<string>();
 
 
   //
@@ -36,5 +40,8 @@ export class LogService {
   setlogin() {
     this.user.next(null);
   }
-  
+
+  setHeaderLabel(label: string) {
+    this.headerLabel.next(label);
+  }
 }

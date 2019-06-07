@@ -36,6 +36,7 @@ import { InventoryOutGoingComponent } from './inventory-out-going/inventory-out-
 import { InventoryReportComponent } from './inventory-report/inventory-report.component';
 import { InventoryAdjustmentComponent } from './inventory-adjustment/inventory-adjustment.component';
 import { ConsumptionComponent } from './consumption/consumption.component';
+import { WarehouseModule } from './warehouse/warehouse.module';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ConsumptionComponent } from './consumption/consumption.component';
     MatGridListModule,
     MatAutocompleteModule,
     MatDatepickerModule,
-    MatNativeDateModule ,
+    MatNativeDateModule,
+    WarehouseModule,
     RouterModule.forRoot([
       { path: '', component: LogInComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -89,7 +91,12 @@ import { ConsumptionComponent } from './consumption/consumption.component';
       { path: 'inventory-out-going', component: InventoryOutGoingComponent, pathMatch: 'full' },
       { path: 'inventory-adjustment', component: InventoryAdjustmentComponent, pathMatch: 'full' },
       { path: 'inventory-report', component: InventoryReportComponent, pathMatch: 'full' },
-      { path: 'inventory-consumption', component: ConsumptionComponent, pathMatch: 'full' }, 
+      { path: 'inventory-consumption', component: ConsumptionComponent, pathMatch: 'full' },
+
+
+
+      //new Approach
+
     ])
   ],
   providers: [Globals],

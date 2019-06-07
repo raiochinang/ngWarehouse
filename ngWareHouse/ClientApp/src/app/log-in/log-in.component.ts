@@ -14,7 +14,7 @@ export class LogInComponent implements OnInit {
   constructor(private logService: LogService, private router: Router) {
     logService.getlogin.subscribe(res => {
       if (res) {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/inv-in');
         this.showWarning = false;
       }
       else {

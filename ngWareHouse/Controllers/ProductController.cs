@@ -74,7 +74,7 @@ namespace ngWareHouse.Controllers
         public IEnumerable<inventory_view> GetInventoryByLocation([FromBody] productEntry entry)
         {
             ProductRepository repo = new ProductRepository();
-            return repo.GetInventoryByLocation(entry.locationId, _context);
+            return repo.GetInventoryByLocation(entry, _context);
         }
 
 
@@ -95,5 +95,7 @@ namespace ngWareHouse.Controllers
         public int userId { get; set; }
         public int locationIdFrom { get; set; }
         public string reference { get; set; }
+        public DateTime transactionDate { get; set; }
+        public string brandCode { get; set; }
     }
 }

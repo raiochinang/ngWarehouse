@@ -133,10 +133,23 @@ namespace ngWareHouse.Repositories
             return true;
         }
 
-        public IEnumerable<inventory_view> GetInventoryByLocation(int locationId, hooDbContext db)
+        public IEnumerable<inventory_view> GetInventoryByLocation(productEntry param, hooDbContext db)
         {
-            var record = db.inventory_view.Where(r => r.locationId == locationId).OrderBy(o => o.item).ToList();
-            return record;
+            var record = db.inventory_view.Where(r => r.locationId == param.locationId);
+            //if (param.transactionDate == null ||param.transactionDate != DateTime.MinValue) {
+            //    record = record.Where(r => r.transactionDate.Date == param.transactionDate.Date);
+            //}
+            if (param.item != null && param.item != "")
+            {
+                record = record.Where(r => r.item.StartsWith(param.item));
+            }
+
+            if (param.brandCode != null && param.brandCode != "")
+            {
+                record = record.Where(r => r.brandcode.StartsWith(param.brandCode));
+            }
+
+            return record.OrderBy(o => o.item).ToList();
         }
     }
 }

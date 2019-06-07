@@ -21,5 +21,11 @@ namespace ngWareHouse
         public DbSet<ngInventoryTrxOutGoing> inventorytrxoutgoing { get; set; }
         public DbSet<ngInventoryAdjustment> inventoryadjustment { get; set; }
         public DbSet<inventory_view> inventory_view { get; set; }
+
+
+        //New Approach
+        public DbSet<WarehouseMaster> WareHouseMaster { get; set; }
+        public DbSet<WareHouseTransaction> WareHouseTransaction { get; set; }
+
     }
 }

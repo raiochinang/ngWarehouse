@@ -1,20 +1,45 @@
+<span class="container">
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Transaction Date" [(ngModel)]="transactionDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</span>
+<span class="container">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Item" [(ngModel)]="item">
+  </mat-form-field>
+</span>
+
+<span class="container">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Brand Code" [(ngModel)]="brandCode"> 
+  </mat-form-field>
+
+</span>
+<button mat-raised-button color="primary" (click)="search()">Search</button>
 <table class='table table-striped' *ngIf="items">
   <thead>
     <tr>
       <th>Item</th>
       <th>Lot Number</th>
+      <th>Brand</th>
       <th>Quantity</th>
       <th>Expiry Date</th>
       <th>Location</th>
+      <th>transaction Date</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of items">
       <td>{{ item.item }}</td>
       <td>{{ item.lotNumber }}</td>
+      <td>{{ item.brandcode }}</td>
       <td>{{ item.quantity  | number: '2.' }}</td>
       <td>{{ item.expiryDate }}</td>
       <td>{{ item.branch }}</td>
+      <td>{{ item.transactionDate }}</td>
+
     </tr>
   </tbody>
 </table>

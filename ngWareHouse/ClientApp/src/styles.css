@@ -13,3 +13,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .router-outlet {
   height: 100vh;
 }
+
+.full-width {
+  width: 100%;
+}
+
+.comment {
+  height: 100px;
+}
+
+.button-row, .filter-row, table-row {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.error-row {
+  margin-left: 10px;
+  color: red;
+  font-weight: bolder;
+}

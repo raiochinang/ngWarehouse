@@ -15,8 +15,13 @@
   <mat-drawer-content>
     <div class="router-outlet">
       <mat-toolbar *ngIf="show">
-        <mat-icon class="menu" matSuffix (click)="drawer.toggle()">menu</mat-icon>
-        HEADER
+        <mat-toolbar-row>
+          <mat-icon class="menu menu-icon" aria-hidden="false" aria-label="menu" matSuffix (click)="drawer.toggle()">menu</mat-icon>
+          <span>{{headerLabel}}</span>
+        </mat-toolbar-row>
+
+
+
       </mat-toolbar>
       <router-outlet></router-outlet>
     </div>

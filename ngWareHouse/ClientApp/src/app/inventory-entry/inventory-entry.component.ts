@@ -5,6 +5,7 @@ import { Product } from '../interfaces/product';
 import { Globals } from '../interfaces/globals';
 import { global } from '@angular/compiler/src/util';
 import { Data } from '../interfaces/data';
+import { LogService } from '../services/log.service';
 
 @Component({
   selector: 'app-inventory-entry',
@@ -20,7 +21,7 @@ export class InventoryEntryComponent implements OnInit {
   itemId: number = 0;
   branch: string = '';
   baseURL: string = "";
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private globals: Globals) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string, private globals: Globals, private logService: LogService) {
     var url = baseUrl + 'api/Product/GetProducts';
     this.baseURL = baseUrl;
     http.get<Product[]>(url).subscribe(result => {
@@ -28,6 +29,7 @@ export class InventoryEntryComponent implements OnInit {
     }, error => console.error(error));
 
     this.branch = globals.user.branch;
+    logService.setHeaderLabel("Inventory In");
   }
 
   entryForm = new FormGroup({
@@ -40,7 +42,6 @@ export class InventoryEntryComponent implements OnInit {
 
   ngOnInit() {
     this.items = [];
-    
   }
 
   scan() {
@@ -93,5 +94,6 @@ export class InventoryEntryComponent implements OnInit {
 
   onCancel() {
     this.entryForm.reset();
+    this.itemLabel = "";
   }
 }

@@ -15,8 +15,9 @@ namespace ngWareHouse.Models
         public string branch { get; set; }
         public string item { get; set; }
         public int locationId { get; set; }
+        public string brandcode { get; set; }
+        public DateTime transactionDate { get; set; }
     }
 }
 
 
-    
