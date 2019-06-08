@@ -27,8 +27,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { LogInComponent } from './log-in/log-in.component';
-import { PurchaseRecieveComponent } from './purchase-recieve/purchase-recieve.component';
-import { PurchaseRecieveEntryComponent } from './purchase-recieve-entry/purchase-recieve-entry.component';
 import { Globals } from './interfaces/globals';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { InventoryEntryComponent } from './inventory-entry/inventory-entry.component';
@@ -46,8 +44,6 @@ import { WarehouseModule } from './warehouse/warehouse.module';
     CounterComponent,
     FetchDataComponent,
     LogInComponent,
-    PurchaseRecieveComponent,
-    PurchaseRecieveEntryComponent,
     InventoryEntryComponent,
     InventoryOutGoingComponent,
     InventoryReportComponent,
@@ -85,8 +81,6 @@ import { WarehouseModule } from './warehouse/warehouse.module';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'log-in', component: LogInComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'purchase-receive', component: PurchaseRecieveComponent },
-      { path: 'purchase-receive-entry/:id', component: PurchaseRecieveEntryComponent },
       { path: 'inventory-entry', component: InventoryEntryComponent, pathMatch: 'full' },
       { path: 'inventory-out-going', component: InventoryOutGoingComponent, pathMatch: 'full' },
       { path: 'inventory-adjustment', component: InventoryAdjustmentComponent, pathMatch: 'full' },
