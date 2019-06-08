@@ -20,6 +20,7 @@ import { InventoryInReportComponent } from './inventory-in-report/inventory-in-r
 import { InventoryOutReportComponent } from './inventory-out-report/inventory-out-report.component';
 import { InventoryAdjustmentReportComponent } from './inventory-adjustment-report/inventory-adjustment-report.component';
 import { InventoryConsumptionReportComponent } from './inventory-consumption-report/inventory-consumption-report.component';
+import { InventoryReportComponent } from './inventory-report/inventory-report.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { InventoryConsumptionReportComponent } from './inventory-consumption-rep
     InventoryInReportComponent,
     InventoryOutReportComponent,
     InventoryAdjustmentReportComponent,
-    InventoryConsumptionReportComponent
+    InventoryConsumptionReportComponent,
+    InventoryReportComponent
   ],
   entryComponents: [
     InventoryInDialogComponent,
@@ -61,7 +63,8 @@ import { InventoryConsumptionReportComponent } from './inventory-consumption-rep
       { path: 'inv-in-report', component: InventoryInReportComponent, pathMatch: 'full' },
       { path: 'inv-out-report', component: InventoryOutReportComponent, pathMatch: 'full' },
       { path: 'inv-adj-report', component: InventoryAdjustmentReportComponent, pathMatch: 'full' },
-      { path: 'inv-con-report', component: InventoryConsumptionReportComponent, pathMatch: 'full' }
+      { path: 'inv-con-report', component: InventoryConsumptionReportComponent, pathMatch: 'full' },
+      { path: 'inv-report', component: InventoryReportComponent, pathMatch: 'full' }
     ])
   ]
 })

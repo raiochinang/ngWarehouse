@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
             { routerDesc: "Inventory Out Report", routerLink: "/inv-out-report" },
             { routerDesc: "Inventory Adjustment Report", routerLink: "/inv-adj-report" },
             { routerDesc: "Inventory Consumption Report", routerLink: "/inv-con-report" },
+            { routerDesc: "Inventory Report", routerLink: "/inv-report" },
           ];
         }
         //Auditor
@@ -52,6 +53,7 @@ export class AppComponent implements OnInit {
             { routerDesc: "Inventory Out Report", routerLink: "/inv-out-report" },
             { routerDesc: "Inventory Adjustment Report", routerLink: "/inv-adj-report" },
             { routerDesc: "Inventory Consumption Report", routerLink: "/inv-con-report" },
+            { routerDesc: "Inventory Report", routerLink: "/inv-report" },
           ];
         }
         //User
@@ -64,6 +66,7 @@ export class AppComponent implements OnInit {
             { routerDesc: "Inventory Out Report", routerLink: "/inv-out-report" },
             { routerDesc: "Inventory Adjustment Report", routerLink: "/inv-adj-report" },
             { routerDesc: "Inventory Consumption Report", routerLink: "/inv-con-report" },
+            { routerDesc: "Inventory Report", routerLink: "/inv-report" },
           ];
         }
       }

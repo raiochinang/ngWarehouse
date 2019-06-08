@@ -1,11 +1,5 @@
 <div class="button-row">
-  <mat-form-field>
-    <mat-label>Transaction Date</mat-label>
-    <input matInput [matDatepicker]="inventoryInReportPicker" placeholder="Transaction Date" [(ngModel)]="transactionDate">
-    <mat-datepicker-toggle matSuffix [for]="inventoryInReportPicker"></mat-datepicker-toggle>
-    <mat-datepicker #inventoryInReportPicker></mat-datepicker>
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onGenerate()">Generate Inventory In Report</button>
+  <button mat-raised-button color="primary" (click)="onGenerate()">Generate Inventory Report</button>
 </div>
 <div class="filter-row">
   <mat-form-field>
@@ -40,21 +34,9 @@
     </ng-container>
 
     <!--Transaction Date Column-->
-    <ng-container matColumnDef="transactionDate">
-      <th mat-header-cell *matHeaderCellDef>Transaction Date</th>
-      <td mat-cell *matCellDef="let element">{{element.transactionDate | date:'MM/dd/yyyy'}}</td>
-    </ng-container>
-
-    <!--Reference Column-->
-    <ng-container matColumnDef="reference">
-      <th mat-header-cell *matHeaderCellDef>Reference</th>
-      <td mat-cell *matCellDef="let element">{{element.reference}}</td>
-    </ng-container>
-
-    <!--Comment Column-->
-    <ng-container matColumnDef="comment">
-      <th mat-header-cell *matHeaderCellDef>Comment</th>
-      <td mat-cell *matCellDef="let element">{{element.comment}}</td>
+    <ng-container matColumnDef="expirationDate">
+      <th mat-header-cell *matHeaderCellDef>Expiration Date</th>
+      <td mat-cell *matCellDef="let element">{{element.expirationDate | date:'MM/dd/yyyy'}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

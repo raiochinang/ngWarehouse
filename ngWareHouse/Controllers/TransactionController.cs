@@ -39,7 +39,12 @@ namespace ngWareHouse.Controllers
             return repository.GenerateReport(model, _context);
         }
 
+        [HttpPost("[action]")]
+        public List<ReportModel> generateInventoryReport([FromBody] WareHouseTransaction model)
+        {
+            TransactionRepository repository = new TransactionRepository();
+            return repository.GenerateInventoryReport(model, _context);
+        }
 
-        
     }
 }

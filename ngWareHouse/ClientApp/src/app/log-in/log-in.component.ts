@@ -37,8 +37,8 @@ export class LogInComponent implements OnInit {
   //
   //Variables
   //
-  username = new FormControl('ryan');
-  password = new FormControl('ryan');
+  username = new FormControl('');
+  password = new FormControl('');
   showWarning: boolean = false;
   hide = true;
 

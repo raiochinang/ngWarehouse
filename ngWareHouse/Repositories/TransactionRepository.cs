@@ -95,7 +95,7 @@ namespace ngWareHouse.Repositories
                                 TransactionType = w.TransactionType,
                                 Quantity = w.Quantity,
                                 Reference = w.Reference,
-                                TransactionDate = w.LastUpdate,
+                                TransactionDate = w.LastUpdate.Date,
                                 ExpirationDate = w.ExpirationDate,
                                 Comment = w.Comment,
                                 Branch = b.name,
@@ -105,11 +105,32 @@ namespace ngWareHouse.Repositories
                             }
                          )
                          .Where(q =>
-                            q.TransactionDate.Date == model.LastUpdate.Date &&
+                            q.TransactionDate == model.LastUpdate.Date.AddDays(1) &&
                             q.LocationId == model.LocationId &&
                             q.TransactionType == model.TransactionType
                          )
                          .ToList();
+            return report;
+        }
+
+        public List<ReportModel> GenerateInventoryReport(WareHouseTransaction model, hooDbContext db)
+        {
+            var report = (
+                    from m in db.WareHouseMaster
+                    join p in db.products on m.ProductId equals p.id
+                    join b in db.branches on m.LocationId equals b.id
+                    select new ReportModel
+                    {
+                        Product = p.item,
+                        Branch = b.name,
+                        LotNumber = m.LotNumber,
+                        ExpirationDate = m.ExpirationDate,
+                        LocationId = m.LocationId,
+                        Quantity = m.Quantity
+                    }
+                )
+                .Where(q => q.LocationId == model.LocationId)
+                .ToList();
             return report;
         }
     }
