@@ -29,7 +29,7 @@ export class WarehouseService {
   }
 
   public getProducts() {
-    var url = this.baseUrl + 'api/Product/GetProducts';
+    var url = this.baseUrl + 'api/Transaction/GetProducts';
     this.http.get<Product[]>(url).subscribe(result => {
       this.products = result;
     }, error => console.error(error));

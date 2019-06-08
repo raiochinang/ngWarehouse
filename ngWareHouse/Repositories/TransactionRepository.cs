@@ -133,5 +133,10 @@ namespace ngWareHouse.Repositories
                 .ToList();
             return report;
         }
+
+        public List<product> products(hooDbContext db)
+        {
+            return db.products.ToList();
+        }
     }
 }

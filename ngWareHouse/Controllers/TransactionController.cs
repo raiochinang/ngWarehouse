@@ -46,5 +46,12 @@ namespace ngWareHouse.Controllers
             return repository.GenerateInventoryReport(model, _context);
         }
 
+        [HttpGet("[action]")]
+        public IEnumerable<product> GetProducts()
+        {
+            TransactionRepository repo = new TransactionRepository();
+            return repo.products(_context);
+        }
+
     }
 }
