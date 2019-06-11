@@ -6,11 +6,11 @@
     </mat-card-header>
     <mat-card-content class="container">
       <mat-form-field>
-        <input matInput placeholder="Enter your user name" [formControl]="username">
+        <input matInput placeholder="Enter your user name" [formControl]="username" (keydown.enter)="login()">
         <mat-icon matSuffix>account_circle</mat-icon>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password">
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password" (keydown.enter)="login()">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="login()">Login</button>
