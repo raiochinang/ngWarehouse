@@ -16,7 +16,7 @@ export class InventoryAdjustmentReportComponent implements OnInit {
 
   report: ReportModel[] = [];
   transactionDate: Date = new Date();
-  displayedColumns = ["branch", "product", "lotNumber", "quantity", "transactionDate", "reference", "comment"];
+  displayedColumns = ["branch", "product", "lotNumber", "quantity", "transactionDate", "reference", "comment", "userName"];
   dataSource = new MatTableDataSource([]);
   constructor(
     private warehouseService: WarehouseService,

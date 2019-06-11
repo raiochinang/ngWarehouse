@@ -57,6 +57,12 @@
       <td mat-cell *matCellDef="let element">{{element.comment}}</td>
     </ng-container>
 
+    <!--User Column-->
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef>Updated by</th>
+      <td mat-cell *matCellDef="let element">{{element.userName}}</td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
