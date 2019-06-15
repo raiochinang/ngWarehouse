@@ -15,7 +15,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class InventoryInReportComponent implements OnInit {
 
   report: ReportModel[] = [];
-  transactionDate: Date = new Date();
+  transactionDate: Date;
   displayedColumns = ["branch", "product", "lotNumber", "quantity", "transactionDate", "reference", "comment", "userName"];
   dataSource = new MatTableDataSource([]);
   constructor(
