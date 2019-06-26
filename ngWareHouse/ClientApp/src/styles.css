@@ -27,9 +27,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-top: 20px;
 }
 
-table {
-  width: 100%;
+.filter-row {
+  width: 30%;
 }
+
+  table {
+    width: 100%;
+  }
 
 .mat-form-field {
   font-size: 14px;
@@ -45,3 +49,8 @@ table {
 /*.mat-column-quantity {
   text-align: right;
 }*/
+
+.date-picker-wrapper {
+  width: 30%;
+  margin: 10px;
+}

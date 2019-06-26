@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReportModel } from 'src/app/interfaces/report-model';
 import { LogService } from 'src/app/services/log.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-inventory-in-report',
@@ -16,6 +17,9 @@ export class InventoryInReportComponent implements OnInit {
 
   report: ReportModel[] = [];
   transactionDate: Date;
+  transactionDateTo: Date;
+  selected: { startDate: Moment, endDate: Moment };
+
   displayedColumns = ["branch", "product", "lotNumber", "quantity", "transactionDate", "reference", "comment", "userName"];
   dataSource = new MatTableDataSource([]);
   constructor(
@@ -33,10 +37,12 @@ export class InventoryInReportComponent implements OnInit {
   }
 
   onGenerate() {
+    
     let model = {
       transactionType: "in",
       locationId: this.globals.user.branch_id,
-      lastUpdate: this.transactionDate
+      lastUpdate: this.selected.startDate.toDate(),
+      lastUpdateTo: this.selected.endDate.toDate(),
     } as WareHouseTransaction;
     var url = this.baseUrl + 'api/Transaction/generateReport';
     this.http.post<ReportModel[]>(url, model).subscribe(report => {

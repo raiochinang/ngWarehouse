@@ -25,6 +25,7 @@ export class InventoryOutDialogComponent implements OnInit {
   public comments: string = "";
   public error: boolean = false;
   public remainingQty: number = 0;
+  public deliveredTo: number = 0;
   public errorMessage: string = "";
 
   constructor(
@@ -130,7 +131,8 @@ export class InventoryOutDialogComponent implements OnInit {
       userId: this.globals.user.id,
       lastUpdate: new Date(),
       quantity: this.quantity,
-      transactionType: "out"
+      transactionType: "out",
+      DeliveredTo: this.deliveredTo
     } as WareHouseTransaction;
 
     if (!this.error) {

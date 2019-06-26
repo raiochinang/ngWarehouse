@@ -21,7 +21,7 @@ import { InventoryOutReportComponent } from './inventory-out-report/inventory-ou
 import { InventoryAdjustmentReportComponent } from './inventory-adjustment-report/inventory-adjustment-report.component';
 import { InventoryConsumptionReportComponent } from './inventory-consumption-report/inventory-consumption-report.component';
 import { InventoryReportComponent } from './inventory-report/inventory-report.component';
-
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 @NgModule({
   declarations: [
@@ -54,6 +54,7 @@ import { InventoryReportComponent } from './inventory-report/inventory-report.co
     MatFormFieldModule,
     MatTableModule,
     MatDatepickerModule,
+    NgxDaterangepickerMd.forRoot(),
     RouterModule.forRoot([
       { path: 'inv-in', component: InventoryInComponent, pathMatch: 'full' },
       { path: 'inv-out', component: InventoryOutComponent, pathMatch: 'full' },

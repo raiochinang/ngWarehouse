@@ -16,7 +16,7 @@ export class InventoryOutReportComponent implements OnInit {
 
   report: ReportModel[] = [];
   transactionDate: Date;
-  displayedColumns = ["branch", "product", "lotNumber", "quantity", "transactionDate", "reference", "comment", "userName"];
+  displayedColumns = ["branch", "deliveryTo", "product", "lotNumber", "quantity", "transactionDate", "reference", "comment", "userName"];
   dataSource = new MatTableDataSource([]);
   constructor(
     private warehouseService: WarehouseService,

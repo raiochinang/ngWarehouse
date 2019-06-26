@@ -17,8 +17,14 @@
 
     <!--Branch Column-->
     <ng-container matColumnDef="branch">
-      <th mat-header-cell *matHeaderCellDef>Branch</th>
+      <th mat-header-cell *matHeaderCellDef>Branch From:</th>
       <td mat-cell *matCellDef="let element">{{element.branch}}</td>
+    </ng-container>
+
+    <!--Branch Column-->
+    <ng-container matColumnDef="deliveryTo">
+      <th mat-header-cell *matHeaderCellDef>Branch To:</th>
+      <td mat-cell *matCellDef="let element">{{element.deliveryTo}}</td>
     </ng-container>
 
     <!--Product Column-->

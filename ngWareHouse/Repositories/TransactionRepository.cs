@@ -89,23 +89,26 @@ namespace ngWareHouse.Repositories
                             join b in db.branches on w.LocationId equals b.id
                             join p in db.products on w.ProductId equals p.id
                             join u in db.dscr_user_roles on w.UserId equals u.id
+                            join b1 in db.branches on w.DeliveredTo equals b1.id
                             select new ReportModel
                             {
                                 LotNumber = w.LotNumber,
                                 TransactionType = w.TransactionType,
                                 Quantity = w.Quantity,
                                 Reference = w.Reference,
-                                TransactionDate = w.LastUpdate.Date,
+                                TransactionDate = w.LastUpdate,
                                 ExpirationDate = w.ExpirationDate,
                                 Comment = w.Comment,
                                 Branch = b.name,
                                 Product = p.item,
                                 LocationId = w.LocationId,
-                                UserName = u.full_name_fld
+                                UserName = u.full_name_fld,
+                                DeliveryTo = b1.name
                             }
                          )
                          .Where(q =>
-                            q.TransactionDate == model.LastUpdate.Date.AddDays(1) &&
+                            q.TransactionDate >= model.LastUpdate.Date.AddDays(1) &&
+                            q.TransactionDate <= model.LastUpdateTo.Date &&
                             q.LocationId == model.LocationId &&
                             q.TransactionType == model.TransactionType
                          )

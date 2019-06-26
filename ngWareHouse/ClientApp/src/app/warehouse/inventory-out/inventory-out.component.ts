@@ -19,7 +19,7 @@ export class InventoryOutComponent implements OnInit {
   animal: string;
   transactionType: string;
   transactionData: WareHouseTransaction[];
-  displayedColumns = ["product", "lotNumber", "quantity", "reference", "comment"];
+  displayedColumns = ["deliveredTo", "product", "lotNumber", "quantity", "reference", "comment"];
 
   dataSource = new MatTableDataSource([]);
   constructor(
