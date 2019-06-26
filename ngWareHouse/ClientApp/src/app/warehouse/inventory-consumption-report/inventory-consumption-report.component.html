@@ -1,11 +1,10 @@
-<div class="button-row">
-  <mat-form-field>
-    <mat-label>Transaction Date</mat-label>
-    <input matInput [matDatepicker]="picker" placeholder="Transaction Date" [(ngModel)]="transactionDate">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onGenerate()">Generate Inventory Consumption Report</button>
+<div class="report-button-row ">
+  <div class="date-picker-wrapper">
+    <input type="text" ngxDaterangepickerMd [(ngModel)]="selected" placeholder="Enter date range" />
+  </div>
+  <div class="date-picker-wrapper">
+    <button mat-raised-button color="primary" (click)="onGenerate()">Generate Inventory Consumption Report</button>
+  </div>
 </div>
 <div class="filter-row">
   <mat-form-field>
