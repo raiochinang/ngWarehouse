@@ -9,10 +9,10 @@
 <div class="table-row">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!--Product Column-->
+    <!--Delivered To Column-->
     <ng-container matColumnDef="deliveredTo">
       <th mat-header-cell *matHeaderCellDef>Delivered To</th>
-      <td mat-cell *matCellDef="let element">{{element.deliveredTo}}</td>
+      <td mat-cell *matCellDef="let element">{{element.deliveryBranch}}</td>
     </ng-container>
 
     <!--Product Column-->

@@ -6,6 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { debug } from 'util';
 import { Product } from 'src/app/interfaces/product';
 import { Globals } from 'src/app/interfaces/globals';
+import { Branch } from 'src/app/interfaces/branch';
 
 @Component({
   selector: 'app-inventory-out-dialog',
@@ -15,6 +16,7 @@ import { Globals } from 'src/app/interfaces/globals';
 export class InventoryOutDialogComponent implements OnInit {
 
   public products: Product[];
+  public branches: Branch[];
   public itemLabel: string = "";
   public productId: number = 0;
   public barcode: string = "";
@@ -25,7 +27,7 @@ export class InventoryOutDialogComponent implements OnInit {
   public comments: string = "";
   public error: boolean = false;
   public remainingQty: number = 0;
-  public deliveredTo: number = 0;
+  public deliveredTo: Branch = null;
   public errorMessage: string = "";
 
   constructor(
@@ -37,6 +39,7 @@ export class InventoryOutDialogComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.warehouseService.products;
+    this.branches = this.warehouseService.branches;
 
     this.warehouseService.master.subscribe(response => {
       if (response === null) {
@@ -122,6 +125,7 @@ export class InventoryOutDialogComponent implements OnInit {
 
   onSaveClick(): void {
     this.onCheckInput();
+    this.warehouseService.deliveryTo = this.deliveredTo.name;
     let model = {
       locationId: this.globals.user.branch_id,
       productId: this.productId,
@@ -132,7 +136,8 @@ export class InventoryOutDialogComponent implements OnInit {
       lastUpdate: new Date(),
       quantity: this.quantity,
       transactionType: "out",
-      DeliveredTo: this.deliveredTo
+      deliveredTo: this.deliveredTo.id,
+
     } as WareHouseTransaction;
 
     if (!this.error) {

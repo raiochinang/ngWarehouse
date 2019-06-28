@@ -141,5 +141,10 @@ namespace ngWareHouse.Repositories
         {
             return db.products.ToList();
         }
+
+        public List<branch> branches(hooDbContext db)
+        {
+            return db.branches.ToList();
+        }
     }
 }

@@ -20,6 +20,5 @@ namespace ngWareHouse.Models
         public DateTime LastUpdateTo { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string Comment { get; set; }
-
     }
 }

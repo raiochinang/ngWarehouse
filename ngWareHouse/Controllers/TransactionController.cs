@@ -53,5 +53,13 @@ namespace ngWareHouse.Controllers
             return repo.products(_context);
         }
 
+        [HttpGet("[action]")]
+        public IEnumerable<branch> GetBranches()
+        {
+            TransactionRepository repo = new TransactionRepository();
+            return repo.branches(_context);
+        }
+
+
     }
 }

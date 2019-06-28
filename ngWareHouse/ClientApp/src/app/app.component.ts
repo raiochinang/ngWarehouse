@@ -80,6 +80,7 @@ export class AppComponent implements OnInit {
     });
 
     this.warehouseService.getProducts();
+    this.warehouseService.getBranches();
 
   }
 

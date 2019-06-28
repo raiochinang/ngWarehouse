@@ -35,6 +35,7 @@ export class InventoryOutComponent implements OnInit {
     this.dataSource = new MatTableDataSource([]);
     this.warehouseService.transaction.subscribe(result => {
       result.product = this.warehouseService.productName;
+      result.deliveryBranch = this.warehouseService.deliveryTo;
       this.transactionData.push(result);
       this.dataSource = new MatTableDataSource(this.transactionData);
     });

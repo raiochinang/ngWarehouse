@@ -19,8 +19,12 @@
     <label>{{remainingQty}}</label>
   </div>
   <mat-form-field appearance="outline" class="full-width">
-    <mat-label>*Delivered To:</mat-label>
-    <input matInput placeholder="Delivery To" [(ngModel)]="deliveredTo" type="number" />
+    <mat-label>*Delivered To</mat-label>
+    <mat-select [(value)]="deliveredTo">
+      <mat-option *ngFor="let branch of branches" [value]="branch">
+        {{branch.name}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>*Quantity</mat-label>

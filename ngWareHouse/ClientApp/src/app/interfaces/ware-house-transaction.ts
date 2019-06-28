@@ -11,7 +11,8 @@ export interface WareHouseTransaction {
   expirationDate: Date;
   comment: string;
   product: string;
-  DeliveredTo: number;
+  deliveredTo: number;
   lastUpdateTo: Date;
+  deliveryBranch: string;
 }
 

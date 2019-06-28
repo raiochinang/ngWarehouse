@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/interfaces/product';
 import { WarehouseMaster } from 'src/app/interfaces/warehouse-master';
+import { Branch } from 'src/app/interfaces/branch';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class WarehouseService {
   transaction: Subject<WareHouseTransaction> = new Subject<WareHouseTransaction>();
   master: Subject<WarehouseMaster> = new Subject<WarehouseMaster>();
   products: Product[] = [];
+  branches: Branch[] = [];
   productName: string = "";
+  branchName: string = "";
+  deliveryTo: string = "";
   report: any[] = [];
 
   constructor(
@@ -32,6 +36,13 @@ export class WarehouseService {
     var url = this.baseUrl + 'api/Transaction/GetProducts';
     this.http.get<Product[]>(url).subscribe(result => {
       this.products = result;
+    }, error => console.error(error));
+  }
+
+  public getBranches() {
+    var url = this.baseUrl + 'api/Transaction/GetBranches';
+    this.http.get<Branch[]>(url).subscribe(result => {
+      this.branches = result;
     }, error => console.error(error));
   }
 

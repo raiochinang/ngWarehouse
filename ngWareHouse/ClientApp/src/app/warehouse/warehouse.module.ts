@@ -22,6 +22,7 @@ import { InventoryAdjustmentReportComponent } from './inventory-adjustment-repor
 import { InventoryConsumptionReportComponent } from './inventory-consumption-report/inventory-consumption-report.component';
 import { InventoryReportComponent } from './inventory-report/inventory-report.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
   imports: [
     CommonModule,
     MatButtonModule,
+    MatSelectModule,
     MatDialogModule,
     MatInputModule,
     FormsModule,

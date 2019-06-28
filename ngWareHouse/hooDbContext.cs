@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ngWareHouse.Models;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,5 @@ namespace ngWareHouse
         //New Approach
         public DbSet<WarehouseMaster> WareHouseMaster { get; set; }
         public DbSet<WareHouseTransaction> WareHouseTransaction { get; set; }
-
-
     }
 }
