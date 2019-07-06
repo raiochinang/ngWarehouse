@@ -84,7 +84,9 @@ namespace ngWareHouse.Repositories
 
         public List<ReportModel> GenerateReport(WareHouseTransaction model, hooDbContext db)
         {
-            var report = (
+            if (model.TransactionType == "out")
+            {
+                var report = (
                             from w in db.WareHouseTransaction
                             join b in db.branches on w.LocationId equals b.id
                             join p in db.products on w.ProductId equals p.id
@@ -111,9 +113,39 @@ namespace ngWareHouse.Repositories
                             q.TransactionDate <= model.LastUpdateTo.Date &&
                             q.LocationId == model.LocationId &&
                             q.TransactionType == model.TransactionType
+                         ).ToList();
+                return report;
+            }
+            else {
+                var report = (
+                            from w in db.WareHouseTransaction
+                            join b in db.branches on w.LocationId equals b.id
+                            join p in db.products on w.ProductId equals p.id
+                            join u in db.dscr_user_roles on w.UserId equals u.id
+                            select new ReportModel
+                            {
+                                LotNumber = w.LotNumber,
+                                TransactionType = w.TransactionType,
+                                Quantity = w.Quantity,
+                                Reference = w.Reference,
+                                TransactionDate = w.LastUpdate,
+                                ExpirationDate = w.ExpirationDate,
+                                Comment = w.Comment,
+                                Branch = b.name,
+                                Product = p.item,
+                                LocationId = w.LocationId,
+                                UserName = u.full_name_fld
+                            }
                          )
-                         .ToList();
-            return report;
+                         .Where(q =>
+                            q.TransactionDate >= model.LastUpdate.Date &&
+                            q.TransactionDate <= model.LastUpdateTo.Date &&
+                            q.LocationId == model.LocationId &&
+                            q.TransactionType == model.TransactionType
+                         ).ToList();
+                return report;
+            }
+            
         }
 
         public List<ReportModel> GenerateInventoryReport(WareHouseTransaction model, hooDbContext db)

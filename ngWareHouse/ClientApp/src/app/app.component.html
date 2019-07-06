@@ -10,6 +10,9 @@
       <mat-list-item *ngFor="let link of links">
         <a class="nav-link text-dark" [routerLinkActive]='["link-active"]' [routerLink]='link.routerLink'>{{link.routerDesc}}</a>
       </mat-list-item>
+      <mat-list-item>
+        <a class="nav-link text-dark" [routerLink]="['log-in']" (click)="drawer.toggle(); logout()">Logout</a>
+      </mat-list-item>
     </mat-list>
   </mat-drawer>
   <mat-drawer-content>
@@ -19,9 +22,6 @@
           <mat-icon class="menu menu-icon" aria-hidden="false" aria-label="menu" matSuffix (click)="drawer.toggle()">menu</mat-icon>
           <span>{{headerLabel}}</span>
         </mat-toolbar-row>
-
-
-
       </mat-toolbar>
       <router-outlet></router-outlet>
     </div>

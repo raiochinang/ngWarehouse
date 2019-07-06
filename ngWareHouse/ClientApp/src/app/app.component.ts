@@ -84,6 +84,10 @@ export class AppComponent implements OnInit {
 
   }
 
+  public logout() {
+    this.show = false;
+  }
+
   //
   //Variables
   //
