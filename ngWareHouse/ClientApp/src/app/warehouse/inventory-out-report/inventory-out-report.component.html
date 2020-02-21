@@ -34,8 +34,8 @@
 
     <!--LotNumber Column-->
     <ng-container matColumnDef="lotNumber">
-      <th mat-header-cell *matHeaderCellDef>Lot Number</th>
-      <td mat-cell *matCellDef="let element">{{element.lotNumber}}</td>
+      <th mat-header-cell class="quantity-container" *matHeaderCellDef>Lot Number</th>
+      <td mat-cell class="quantity-container" *matCellDef="let element">{{element.lotNumber | number: '1.0'}}</td>
     </ng-container>
 
     <!--Quantity Column-->

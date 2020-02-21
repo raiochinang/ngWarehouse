@@ -21,6 +21,12 @@
       <td mat-cell *matCellDef="let element">{{element.product}}</td>
     </ng-container>
 
+    <!--cost Column-->
+    <ng-container matColumnDef="cost">
+      <th mat-header-cell *matHeaderCellDef>Cost</th>
+      <td mat-cell *matCellDef="let element">{{element.cost | number: '1.2-2'}}</td>
+    </ng-container>
+
     <!--LotNumber Column-->
     <ng-container matColumnDef="lotNumber">
       <th mat-header-cell *matHeaderCellDef>Lot Number</th>
@@ -29,14 +35,14 @@
 
     <!--Quantity Column-->
     <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef>Quantity</th>
-      <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+      <th class="quantity-container" mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td class="quantity-container" mat-cell *matCellDef="let element">{{element.quantity | number: '1.0'}}</td>
     </ng-container>
 
     <!--Transaction Date Column-->
     <ng-container matColumnDef="expirationDate">
       <th mat-header-cell *matHeaderCellDef>Expiration Date</th>
-      <td mat-cell *matCellDef="let element">{{element.expirationDate | date:'MM/dd/yyyy'}}</td>
+      <td mat-cell *matCellDef="let element"><span [ngClass]="checkExpiration(element.expirationDate)">{{element.expirationDate | date:'MM/dd/yyyy'}}</span></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

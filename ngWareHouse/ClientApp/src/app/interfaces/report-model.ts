@@ -8,4 +8,5 @@ export interface ReportModel {
   expirationDate: Date;
   transactionDate: Date;
   comment: string;
+  cost: number;
 }

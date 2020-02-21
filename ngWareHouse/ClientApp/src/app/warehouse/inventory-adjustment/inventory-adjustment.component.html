@@ -17,8 +17,8 @@
 
     <!--Quantity Column-->
     <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef>Quantity</th>
-      <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+      <th class="quantity-container" mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td class="quantity-container" mat-cell *matCellDef="let element">{{element.quantity | number: '1.0'}}</td>
     </ng-container>
 
     <!--Reference Column-->

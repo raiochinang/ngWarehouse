@@ -1,0 +1,14 @@
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `warehousecostreportmodel` AS
+    SELECT 
+        `products`.`id` AS `id`,
+        `products`.`id` AS `ProductId`,
+        `products`.`item` AS `ProductName`,
+        `products`.`barcode` AS `Barcode`,
+        IFNULL(`warehousecost`.`cost`, 0) AS `Cost`
+    FROM
+        (`products`
+        LEFT JOIN `warehousecost` ON ((`products`.`id` = `warehousecost`.`productid`)))

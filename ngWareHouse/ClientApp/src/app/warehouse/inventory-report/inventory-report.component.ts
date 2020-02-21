@@ -16,7 +16,7 @@ export class InventoryReportComponent implements OnInit {
 
   report: ReportModel[] = [];
   transactionDate: Date = new Date();
-  displayedColumns = ["branch", "product", "lotNumber", "quantity", "expirationDate"];
+  displayedColumns = [];
   dataSource = new MatTableDataSource([]);
   constructor(
     private warehouseService: WarehouseService,
@@ -29,7 +29,15 @@ export class InventoryReportComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if (this.globals.user.branch_id != 13) {
+      //warehouse
+      this.displayedColumns = ["branch", "product", "cost", "lotNumber", "quantity", "expirationDate"];
+    }
+    else {
+      //branches
+      this.displayedColumns = ["branch", "product", "lotNumber", "quantity", "expirationDate"];
+    }
+   
   }
 
   onGenerate() {
@@ -45,4 +53,26 @@ export class InventoryReportComponent implements OnInit {
   public applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  public checkExpiration(d: Date): string {
+    var today = new Date();
+    var elementDate = new Date(d);
+    var isExpire = today > elementDate;
+    if (!isExpire) {
+      var now = new Date(d);
+      var sixMonthAfterNow = new Date();
+      sixMonthAfterNow.setMonth(sixMonthAfterNow.getMonth() + 6);
+      if (sixMonthAfterNow <= now) {
+        return "normal";
+      }
+      else {
+        return "blue";
+      }
+    }
+    else {
+      return "red";
+    }
+
+  }
+
 }

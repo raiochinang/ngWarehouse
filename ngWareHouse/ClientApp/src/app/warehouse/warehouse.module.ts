@@ -23,6 +23,8 @@ import { InventoryConsumptionReportComponent } from './inventory-consumption-rep
 import { InventoryReportComponent } from './inventory-report/inventory-report.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { MatSelectModule } from '@angular/material/select';
+import { InventoryCostComponent } from './inventory-cost/inventory-cost.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { MatSelectModule } from '@angular/material/select';
     InventoryOutReportComponent,
     InventoryAdjustmentReportComponent,
     InventoryConsumptionReportComponent,
-    InventoryReportComponent
+    InventoryReportComponent,
+    InventoryCostComponent
   ],
   entryComponents: [
     InventoryInDialogComponent,
@@ -56,6 +59,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatTableModule,
     MatDatepickerModule,
+    MatPaginatorModule,
     NgxDaterangepickerMd.forRoot(),
     RouterModule.forRoot([
       { path: 'inv-in', component: InventoryInComponent, pathMatch: 'full' },
@@ -67,7 +71,11 @@ import { MatSelectModule } from '@angular/material/select';
       { path: 'inv-out-report', component: InventoryOutReportComponent, pathMatch: 'full' },
       { path: 'inv-adj-report', component: InventoryAdjustmentReportComponent, pathMatch: 'full' },
       { path: 'inv-con-report', component: InventoryConsumptionReportComponent, pathMatch: 'full' },
-      { path: 'inv-report', component: InventoryReportComponent, pathMatch: 'full' }
+      { path: 'inv-report', component: InventoryReportComponent, pathMatch: 'full' },
+
+      { path: 'inv-cost', component: InventoryCostComponent, pathMatch: 'full' }
+
+
     ])
   ]
 })

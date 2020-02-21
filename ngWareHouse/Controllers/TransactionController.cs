@@ -40,7 +40,7 @@ namespace ngWareHouse.Controllers
         }
 
         [HttpPost("[action]")]
-        public List<ReportModel> generateInventoryReport([FromBody] WareHouseTransaction model)
+        public List<InventoryReportModel> generateInventoryReport([FromBody] WareHouseTransaction model)
         {
             TransactionRepository repository = new TransactionRepository();
             return repository.GenerateInventoryReport(model, _context);
@@ -58,6 +58,20 @@ namespace ngWareHouse.Controllers
         {
             TransactionRepository repo = new TransactionRepository();
             return repo.branches(_context);
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<WarehouseCostModel> GetInventoryCost()
+        {
+            TransactionRepository repo = new TransactionRepository();
+            return repo.GetInventoryCost(_context);
+        }
+
+        [HttpPost("[action]")]
+        public bool UpdateInventoryCost([FromBody] WarehouseCostModel model)
+        {
+            TransactionRepository repo = new TransactionRepository();
+            return repo.UpdateInventoryCost(_context, model);
         }
 
 

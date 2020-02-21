@@ -116,7 +116,8 @@ namespace ngWareHouse.Repositories
                          ).ToList();
                 return report;
             }
-            else {
+            else
+            {
                 var report = (
                             from w in db.WareHouseTransaction
                             join b in db.branches on w.LocationId equals b.id
@@ -145,28 +146,12 @@ namespace ngWareHouse.Repositories
                          ).ToList();
                 return report;
             }
-            
+
         }
 
-        public List<ReportModel> GenerateInventoryReport(WareHouseTransaction model, hooDbContext db)
+        public List<InventoryReportModel> GenerateInventoryReport(WareHouseTransaction model, hooDbContext db)
         {
-            var report = (
-                    from m in db.WareHouseMaster
-                    join p in db.products on m.ProductId equals p.id
-                    join b in db.branches on m.LocationId equals b.id
-                    select new ReportModel
-                    {
-                        Product = p.item,
-                        Branch = b.name,
-                        LotNumber = m.LotNumber,
-                        ExpirationDate = m.ExpirationDate,
-                        LocationId = m.LocationId,
-                        Quantity = m.Quantity
-                    }
-                )
-                .Where(q => q.LocationId == model.LocationId)
-                .ToList();
-            return report;
+            return db.InventoryReportModels.Where(q => q.LocationId == model.LocationId).ToList(); ;
         }
 
         public List<product> products(hooDbContext db)
@@ -177,6 +162,49 @@ namespace ngWareHouse.Repositories
         public List<branch> branches(hooDbContext db)
         {
             return db.branches.ToList();
+        }
+
+        public List<WarehouseCostModel> GetInventoryCost(hooDbContext db)
+        {
+            return db.WarehouseCostReportModel.OrderBy(r => r.ProductName).ToList();
+        }
+
+        public bool UpdateInventoryCost(hooDbContext db, WarehouseCostModel model)
+        {
+            using (var trx = db.Database.BeginTransaction())
+            {
+                try
+                {
+                    var dbWarehouseCost = db.WarehouseCost.Where(w => w.ProductId == model.ProductId).SingleOrDefault();
+
+                    if (dbWarehouseCost == null)
+                    {
+                        //Add
+                        var warehouseCost = new WarehouseCost();
+                        warehouseCost.Cost = model.Cost;
+                        warehouseCost.ProductId = model.ProductId;
+                        db.WarehouseCost.Add(warehouseCost);
+                    }
+                    else
+                    {
+                        //update
+                        dbWarehouseCost.Cost = model.Cost;
+                    }
+                    db.SaveChanges();
+                    trx.Commit();
+
+                }
+                catch (Exception ex)
+                {
+                    trx.Rollback();
+                    return false;
+                }
+                finally
+                {
+                    trx.Dispose();
+                }
+            }
+            return true;
         }
     }
 }

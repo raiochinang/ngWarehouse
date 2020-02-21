@@ -20,7 +20,8 @@ namespace ngWareHouse.Models
         public DateTime ExpirationDate { get; set; }
         public string Comment { get; set; }
         public string TransactionType { get; set; }
-        public string DeliveryTo { get; set; }
+        public string DeliveryTo { get; set; } 
+        public decimal? Cost { get; set; }
 
     }
 }

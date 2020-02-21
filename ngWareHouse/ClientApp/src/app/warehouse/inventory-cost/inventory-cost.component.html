@@ -1,0 +1,46 @@
+<div class="control-container">
+  <div>
+    <mat-form-field>
+      <mat-label>Product</mat-label>
+      <input matInput placeholder="Product" [(ngModel)]="formData.productName" type="text" disabled />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cost</mat-label>
+      <input matInput placeholder="Cost" [(ngModel)]="formData.cost" type="number" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+    </mat-form-field>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="cost-table">
+        <!--Product Column-->
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef>Product</th>
+          <td mat-cell *matCellDef="let element">{{element.productName}}</td>
+        </ng-container>
+
+        <!--Cost Column-->
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell class="cost-container" *matHeaderCellDef>Cost</th>
+          <td mat-cell class="cost-container" *matCellDef="let element">
+            <span [ngClass]="{'zero' : element.cost < 1 }">{{element.cost | number: '1.2-2'}}</span>
+          </td>
+        </ng-container>
+
+        <!--productId Column-->
+        <ng-container matColumnDef="productId">
+          <th mat-header-cell *matHeaderCellDef>Product Id</th>
+          <td mat-cell tabindex="1" *matCellDef="let element">{{element.productId}}</td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr class="cost-row" mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRow(row)"></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

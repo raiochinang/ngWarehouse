@@ -19,5 +19,8 @@ namespace ngWareHouse
         //New Approach
         public DbSet<WarehouseMaster> WareHouseMaster { get; set; }
         public DbSet<WareHouseTransaction> WareHouseTransaction { get; set; }
+        public DbSet<WarehouseCost> WarehouseCost { get; set; }
+        public DbSet<InventoryReportModel> InventoryReportModels { get; set; }
+        public DbSet<WarehouseCostModel> WarehouseCostReportModel { get; set; }
     }
 }

@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
             { routerDesc: "Inventory Adjustment Report", routerLink: "/inv-adj-report" },
             { routerDesc: "Inventory Consumption Report", routerLink: "/inv-con-report" },
             { routerDesc: "Inventory Report", routerLink: "/inv-report" },
+            { routerDesc: "Inventory Cost", routerLink: "/inv-cost" },
           ];
         }
         //Auditor

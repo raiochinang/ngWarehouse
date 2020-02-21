@@ -1,0 +1,19 @@
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `inventoryreportmodels` AS
+    SELECT 
+        `warehousemaster`.`WareHouseMasterId` AS `id`,
+        `products`.`item` AS `Product`,
+        `branches`.`name` AS `Branch`,
+        `warehousemaster`.`LotNumber` AS `LotNumber`,
+        `warehousemaster`.`ExpirationDate` AS `ExpirationDate`,
+        `warehousemaster`.`LocationId` AS `LocationId`,
+        `warehousemaster`.`Quantity` AS `Quantity`,
+        `warehousecost`.`cost` AS `Cost`
+    FROM
+        (((`warehousemaster`
+        JOIN `products` ON ((`warehousemaster`.`ProductId` = `products`.`id`)))
+        JOIN `branches` ON ((`warehousemaster`.`LocationId` = `branches`.`id`)))
+        JOIN `warehousecost` ON ((`products`.`id` = `warehousecost`.`productid`)))
